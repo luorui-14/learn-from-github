@@ -1,0 +1,16 @@
+# Local secrets and Vercel credentials
+.env
+.env.local
+.env.*.local
+.vercel
+
+# Local-only build and package artifacts
+.next
+node_modules
+.npm-cache
+.git
+*.log
+
+# Pipeline scratch output
+data/smoke.json
+data/*.tmp

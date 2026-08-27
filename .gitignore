@@ -22,3 +22,6 @@ Thumbs.db
 # pipeline scratch output
 /data/smoke.json
 /data/*.tmp
+
+# Vercel local project link
+.vercel

@@ -145,28 +145,31 @@ npm run build
 - 用户可见的解释字段经过 Schema 和中文内容校验。
 - Dependency File 不存在属于正常情况。
 
-## 部署建议
+## 部署与每周自动化
 
-Dashboard 可以部署到支持 Next.js 的平台。部署前先生成并提交公开的 `data/latest.json`，然后执行 Production Build。
+Production Dashboard：<https://learn-from-github.vercel.app>
 
-由于 Serverless 文件系统通常不可持久写入，未来的 GitHub Actions 推荐按以下顺序运行：
+`.github/workflows/weekly.yml` 每周一 08:00（Asia/Shanghai）自动运行，也支持从 GitHub Actions 页面手动触发。执行顺序固定为：
 
-1. 使用 Actions Secrets 注入全部环境变量。
-2. 执行 `npm ci` 和 `npm run pipeline`。
-3. 将新的 `data/latest.json` 提交回 Repository，触发站点重新部署。
-4. 部署完成后执行 `npm run newsletter`，确保邮件链接指向最新 Dashboard。
+1. 安装依赖并执行 TypeScript 检查。
+2. 执行 Pipeline，生成新的 `data/latest.json`。
+3. 将公开的周报 JSON 提交回 `main`。
+4. 使用 Vercel CLI 完成 Production Build 与部署。
+5. 验证正式页面包含本周全部 Repository 锚点。
+6. 验证通过后才发送 Newsletter。
 
-建议配置的 GitHub Actions Secrets：
+需要配置以下 GitHub Actions Repository Secrets：
 
 ```text
 DASHSCOPE_API_KEY
 BAILIAN_BASE_URL
-AI_MODEL
-GITHUB_TOKEN
+GH_API_TOKEN
 RESEND_API_KEY
 NEWSLETTER_FROM
 NEWSLETTER_TO
-SITE_URL
+VERCEL_ORG_ID
+VERCEL_PROJECT_ID
+VERCEL_TOKEN
 ```
 
-当前项目没有创建远程 GitHub Repository，也没有启用自动部署或定时任务。
+`AI_MODEL` 和 `SITE_URL` 是非敏感固定配置，直接写在 Workflow 中。Vercel 只托管由 `data/latest.json` 构建出的静态 Dashboard，运行时不需要百炼、GitHub 或 Resend Key，因此这些 Key 不配置到 Vercel，也不会进入构建产物。

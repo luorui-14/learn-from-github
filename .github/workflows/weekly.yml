@@ -1,0 +1,109 @@
+name: Weekly pipeline and newsletter
+
+on:
+  schedule:
+    # Monday 08:00 Asia/Shanghai (Monday 00:00 UTC).
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: learn-from-github-weekly
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      AI_MODEL: deepseek-v4-pro
+      SITE_URL: https://learn-from-github.vercel.app
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TELEMETRY_DISABLED: "1"
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Validate required secrets
+        shell: bash
+        env:
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          BAILIAN_BASE_URL: ${{ secrets.BAILIAN_BASE_URL }}
+          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
+          NEWSLETTER_TO: ${{ secrets.NEWSLETTER_TO }}
+        run: |
+          missing=()
+          for name in DASHSCOPE_API_KEY BAILIAN_BASE_URL GH_API_TOKEN RESEND_API_KEY NEWSLETTER_FROM NEWSLETTER_TO VERCEL_ORG_ID VERCEL_PROJECT_ID VERCEL_TOKEN; do
+            if [ -z "${!name}" ]; then
+              missing+=("$name")
+            fi
+          done
+          if [ "${#missing[@]}" -ne 0 ]; then
+            printf 'Missing required GitHub Actions secrets: %s\n' "${missing[*]}"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Generate weekly report
+        env:
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          BAILIAN_BASE_URL: ${{ secrets.BAILIAN_BASE_URL }}
+          GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
+        run: npm run pipeline
+
+      - name: Commit weekly report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest.json
+          if git diff --cached --quiet; then
+            echo "Weekly report is unchanged; nothing to commit."
+          else
+            git commit -m "chore: update weekly report"
+            git push origin HEAD:main
+          fi
+
+      - name: Pull Vercel project settings
+        run: npx --yes vercel@59.7.0 pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Build production deployment
+        run: npx --yes vercel@59.7.0 build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy production dashboard
+        run: npx --yes vercel@59.7.0 deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+
+      - name: Verify deployed dashboard
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 5 --retry-delay 5 --retry-all-errors \
+            "$SITE_URL" --output "$RUNNER_TEMP/dashboard.html"
+          node -e 'const fs=require("fs"); const report=require("./data/latest.json"); const html=fs.readFileSync(process.env.RUNNER_TEMP+"/dashboard.html","utf8"); for (const repository of report.repositories) { const id=repository.fullName.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); if (!html.includes(`id="${id}"`)) throw new Error(`Production dashboard is missing ${repository.fullName}`); } console.log(`Verified ${report.repositories.length} repository anchors on production.`);'
+
+      - name: Send newsletter
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
+          NEWSLETTER_TO: ${{ secrets.NEWSLETTER_TO }}
+        run: npm run newsletter
