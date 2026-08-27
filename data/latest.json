@@ -1,0 +1,257 @@
+{
+  "weekOf": "2026-08-24",
+  "generatedAt": "2026-08-27T04:29:39.864Z",
+  "repositories": [
+    {
+      "owner": "anthropics",
+      "name": "claude-plugins-community",
+      "fullName": "anthropics/claude-plugins-community",
+      "url": "https://github.com/anthropics/claude-plugins-community",
+      "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+      "primaryLanguage": "Python",
+      "totalStars": 2252,
+      "starsThisWeek": 1759,
+      "analysis": {
+        "summary": "这是一个由 Anthropic 维护的社区插件市场只读镜像，专门为 Claude Cowork 和 Claude Code 提供第三方插件。它本身不包含插件源码，而是提供一个经过审核的插件列表，供用户直接在 Claude 产品中发现和安装扩展功能。",
+        "whyItMatters": "该项目展示了 AI 助手如何通过插件市场构建可扩展的生态系统，让社区贡献能安全地集成到商用产品中。它解决了第三方扩展的安全审核与分发难题，目前因 Claude 产品用户增长和插件生态刚起步而备受关注，反映了 AI 工具从封闭走向开放平台化的趋势。",
+        "howItWorks": "根据 README，本仓库是社区插件的只读镜像，核心文件 .claude-plugin/marketplace.json 由 Anthropic 内部审核管道每晚同步生成。所有插件均通过 claude.ai 提交，并经过自动化安全扫描和审核后才能在市场中列出。用户通过 Claude Cowork 的网页界面或 Claude Code 的命令行工具添加此市场并安装插件，无需直接操作此仓库。",
+        "tags": [
+          "plugin-marketplace",
+          "claude-ecosystem",
+          "community",
+          "read-only-mirror",
+          "cli-tools"
+        ],
+        "technologies": [
+          "Python",
+          "JSON"
+        ],
+        "learn": {
+          "topics": [
+            "插件市场架构",
+            "社区治理与审核流程",
+            "CLI 工具设计",
+            "JSON 配置文件管理",
+            "自动化安全扫描"
+          ],
+          "learningPath": "建议先理解插件系统的基本概念和 marketplace 模式，然后阅读 JSON 配置文件的结构，接着尝试编写一个简单的 CLI 工具来解析和操作类似的注册表，最后了解开源社区治理中的审核与安全扫描流程。"
+        },
+        "build": {
+          "title": "mini-plugin-registry",
+          "description": "一个极简的本地 CLI 插件注册表模拟工具，用于管理本地插件配置文件并模拟安装/卸载。",
+          "features": [
+            "从本地 JSON 文件加载插件列表",
+            "按名称搜索并显示插件信息",
+            "模拟安装插件（将插件名写入本地已安装列表）",
+            "模拟卸载插件（从本地已安装列表中移除）",
+            "校验插件列表中必要字段的完整性"
+          ],
+          "difficulty": "beginner"
+        }
+      }
+    },
+    {
+      "owner": "AprilNEA",
+      "name": "OpenLogi",
+      "fullName": "AprilNEA/OpenLogi",
+      "url": "https://github.com/AprilNEA/OpenLogi",
+      "description": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
+      "primaryLanguage": "Rust",
+      "totalStars": 16911,
+      "starsThisWeek": 7078,
+      "analysis": {
+        "summary": "OpenLogi 是一个用 Rust 编写的开源桌面应用，旨在成为 Logitech Options+ 官方软件的本地化、隐私优先的替代品。它通过 HID++ 和 UVC 协议直接与硬件通信，让用户在没有账户和遥测的情况下，完全掌控罗技鼠标、键盘和摄像头的所有高级功能，包括按键重映射、DPI 调节、手势控制和摄像头硬件参数设置。",
+        "whyItMatters": "它解决了 Logitech Options+ 长期存在的痛点：强制登录、收集遥测数据、不支持 Linux 以及资源占用高。在一个用户对隐私和设备自主权要求日益增长的背景下，OpenLogi 代表了一种趋势：用 Rust 这种高性能语言构建的本地优先工具正在挑战传统硬件厂商臃肿的配套软件，为用户夺回对自有硬件的完整控制权，尤其是在 Linux 等厂商忽视的平台上。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 OpenLogi 通过 Rust 实现了一个本地优先的桌面应用，其核心分为 GUI 和后台 Agent 进程。后台 Agent 负责通过 HID++ 和 UVC 协议直接与硬件通信，实现对鼠标、键盘和摄像头的控制，例如按钮重映射和 DPI 调节。GUI 和 Agent 协同工作，用户的所有配置（如按键映射、手势、设备设置）都保存在一个 TOML 格式的纯文本文件中，不依赖任何云端账户或遥测。",
+        "tags": [
+          "Rust",
+          "HID++",
+          "隐私优先",
+          "罗技",
+          "外设工具"
+        ],
+        "technologies": [
+          "Rust",
+          "GPUI",
+          "HID++",
+          "UVC",
+          "TOML",
+          "D-Bus MPRIS"
+        ],
+        "learn": {
+          "topics": [
+            "HID++ 协议",
+            "Rust 并发与系统编程",
+            "TOML 配置文件管理",
+            "跨平台桌面应用架构（GUI + Agent）",
+            "UVC 协议基础"
+          ],
+          "learningPath": "首先，学习并理解 Logitech HID++ 协议的基本概念，了解你的设备如何与主机通信。然后，阅读 Rust 中关于 HID 设备访问的库（如 hidapi）和 OpenLogi 的 TOML 配置文件，尝试编写一个简单的 CLI 程序来读取设备信息。最后，参考 OpenLogi 的 Agent 架构，设计一个后台服务来监听并修改输入事件。"
+        },
+        "build": {
+          "title": "KeyBind",
+          "description": "一个最小化但实用的鼠标按键重映射工具，能够为特定鼠标侧键绑定系统级快捷键。",
+          "features": [
+            "通过 HID++ 协议检测并连接 Logitech 无线鼠标",
+            "将鼠标侧键（前进/后退）重映射为自定义键盘快捷键",
+            "使用 TOML 文件保存和加载按键映射配置",
+            "提供一个简单的命令行界面（CLI）来测试和切换配置",
+            "在后台作为守护进程/Agent运行，确保重映射持续生效"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "modular",
+      "name": "modular",
+      "fullName": "modular/modular",
+      "url": "https://github.com/modular/modular",
+      "description": "The Modular Platform (includes MAX & Mojo)",
+      "primaryLanguage": "Mojo",
+      "totalStars": 29230,
+      "starsThisWeek": 1984,
+      "analysis": {
+        "summary": "Modular 是一个统一的 AI 开发与部署平台，旨在通过两个核心组件——MAX 框架和 Mojo 语言——简化并加速 AI 工作流。它提供了一个从模型开发到高性能推理服务的完整工具链，其底层能力通过 Mojo 编译器与标准库，以及 MAX 的加速库和推理服务器得以实现。",
+        "whyItMatters": "该项目试图解决当前 AI 开发者在模型训练与部署中面临的性能瓶颈和工具碎片化问题。Mojo 语言通过编译技术，旨在为 Python 生态带来系统级性能；而 MAX 框架则提供开箱即用的高性能推理。两者结合，代表了一种通过统一语言和平台来取代传统多语言、多框架复杂工作流的趋势，降低 AI 应用的开发与部署门槛。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Modular 平台包含两个核心部分：一是 Mojo 语言，其编译器（位于 /KGEN）和标准库（位于 /mojo/stdlib）已开源；二是 MAX 框架，它提供了 GPU 加速计算库（/max/kernels）、一个 OpenAI 兼容的推理服务器（/max/python/max/serve）以及用于构建模型管道的 Python 图（/max/python/max/pipelines）。项目通过 pyproject.toml 文件管理 Python 子项目，并使用了 black、ruff 和 mypy 等工具进行代码规范检查，表明其代码库包含大量 Python 代码，负责将底层的加速能力与上层的 AI 开发和部署流程连接起来。",
+        "tags": [
+          "ai-platform",
+          "inference",
+          "gpu-acceleration",
+          "compiler",
+          "mojo"
+        ],
+        "technologies": [
+          "Mojo",
+          "Python",
+          "OpenAI API"
+        ],
+        "learn": {
+          "topics": [
+            "Mojo 语言与 Python 的互操作性及性能优化",
+            "AI 编译器（如 Mojo 编译器）的基本原理",
+            "GPU 加速计算库的封装与使用",
+            "OpenAI 兼容的推理服务器设计与实现",
+            "基于 Python 的模型管道（Graph）构建"
+          ],
+          "learningPath": "建议先了解 Mojo 语言如何通过编译提升 Python 在 AI 领域的性能，再学习 MAX 的 Python API 如何构建和部署推理管道，最后实践用 MAX Serve 部署一个开源模型。"
+        },
+        "build": {
+          "title": "MiniServe",
+          "description": "一个极简的 GPU 加速推理服务器，仅支持加载一个预训练模型并通过 OpenAI 兼容 API 提供文本生成服务。",
+          "features": [
+            "加载一个 Hugging Face 上的小型语言模型（如 GPT-2）",
+            "实现一个 OpenAI 兼容的 /v1/completions 端点",
+            "使用 MAX 的 Python API 创建推理计算图",
+            "支持基本的文本生成参数（max_tokens, temperature）",
+            "提供简单的命令行接口进行启动和测试"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "basecamp",
+      "name": "omarchy",
+      "fullName": "basecamp/omarchy",
+      "url": "https://github.com/basecamp/omarchy",
+      "description": "Beautiful, Modern & Opinionated Linux",
+      "primaryLanguage": "Shell",
+      "totalStars": 32126,
+      "starsThisWeek": 5186,
+      "analysis": {
+        "summary": "Omarchy 是一个由 DHH 发起的精美且带有强烈个人主张的 Linux 发行版，试图为开发者提供一套开箱即用、视觉统一且高度可配置的桌面环境。它不追求无限灵活性，而是把精心挑选的终端、编辑器、AI 工具和生产力组件整合进一个完整的手册中，让用户能快速进入工作状态。",
+        "whyItMatters": "在众多 Linux 发行版中，Omarchy 的独特之处在于它把“美学”和“主张”放在首位，而不是单纯堆砌软件包。它解决的是开发者从 macOS 或 Windows 迁移到 Linux 时，桌面环境碎片化、配置繁琐、视觉陈旧的问题。该项目在短时间内获得大量关注，反映出开发社区对高度整合、漂亮且不折腾的 Linux 桌面环境有强烈需求，也体现了“个人品牌发行版”正在成为一种新的趋势。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Omarchy 主要通过 Shell 脚本和一系列配置手册来定义系统的外观与行为。它提供了一套预设的 Neovim、终端、AI 工具和桌面组件配置，用户通过命令行工具和 dotfiles 管理环境，并借助统一的热键、主题和剪贴板系统保持交互一致性。项目本身作为一个发行版，其构建逻辑集中在配置声明和自动化脚本上，而非从零编译一个新的 Linux 内核。",
+        "tags": [
+          "Linux Distribution",
+          "Desktop Environment",
+          "Dotfiles",
+          "Developer Productivity",
+          "Opinionated Setup"
+        ],
+        "technologies": [
+          "Shell",
+          "Neovim",
+          "Linux Desktop Components"
+        ],
+        "learn": {
+          "topics": [
+            "Linux 桌面环境定制",
+            "dotfiles 管理与版本控制",
+            "Shell 脚本自动化",
+            "Neovim 配置与插件生态",
+            "统一剪贴板与快捷键设计"
+          ],
+          "learningPath": "建议先阅读 Omarchy 手册的 Getting Started 和 Navigation 章节，理解其桌面理念与快捷键体系；然后亲手在一个虚拟机中按照手册步骤搭建环境，感受 dotfiles 管理和 CLI 工具如何协同工作；最后深入 Neovim 和 Shell 工具章节，学习如何定制自己的开发环境。"
+        },
+        "build": {
+          "title": "KickstartEnv",
+          "description": "一个基于 Shell 脚本的轻量级桌面环境配置生成器，用来自动化安装核心工具、主题和快捷键，帮助开发者在纯净 Linux 系统上快速获得一套美观、一致、可直接使用的工作环境。",
+          "features": [
+            "一键安装 Alacritty、Neovim、tmux 和指定 font 主题",
+            "基于模板生成 dotfiles，并提供统一快捷键配置",
+            "集成剪贴板管理器和系统主题切换命令",
+            "生成安装报告，列出所有已安装组件和版本",
+            "可直接在多数 Linux 发行版上运行，无需依赖特定仓库"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "freestylefly",
+      "name": "awesome-gpt-image-2",
+      "fullName": "freestylefly/awesome-gpt-image-2",
+      "url": "https://github.com/freestylefly/awesome-gpt-image-2",
+      "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+      "primaryLanguage": "JavaScript",
+      "totalStars": 21813,
+      "starsThisWeek": 9477,
+      "analysis": {
+        "summary": "awesome-gpt-image-2 是一个将 AI 图像生成提示词工程化的项目，其核心理念是“Prompt-as-Code”。它并非简单的提示词列表，而是通过对大量社区案例进行逆向工程，提炼出一套结构化的工业级提示词模板库和原子化的组成模式，旨在提升 AI 生成图像的稳定性和可控性，使提示词成为可被代理和自动化工作流复用的标准化资产。",
+        "whyItMatters": "随着 AI 图像生成从“能生成”走向“能稳定、可控地生成”，高质量的提示词工程成为关键瓶颈。该项目解决了社区案例碎片化、难以复用的问题，将最佳实践转化为结构化的代码资产。它体现了当前 AI 应用开发的两个重要趋势：一是将提示词设计从艺术创作转向工程化、标准化的流程；二是通过 Agent Skill 等方式，让提示词资源能够直接融入 AI 编程助手的自动化工作流中，极大地提升了专业用户的生产效率。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认该项目将 DALL·E 3 (GPT-Image2) 的提示词工程实践化为“Prompt-as-Code”资产。它通过逆向工程超过 530 个案例，提炼出 20 多套按主题分类的工业级提示词模板，并将文本提示词拆解为结构化、可组合的“原子模式”。项目还包含一个 Agent Skill (npm 包)，允许 AI 编程工具（如 Claude Code）直接调用这些模板生成提示词，并提供了一个在线画廊网站用于浏览和复制案例。",
+        "tags": [
+          "prompt-engineering",
+          "ai-image-generation",
+          "template-library",
+          "reverse-engineering",
+          "agent-skill"
+        ],
+        "technologies": [
+          "JavaScript",
+          "React",
+          "Vite",
+          "npm",
+          "Supabase",
+          "Stripe",
+          "Alipay SDK"
+        ],
+        "learn": {
+          "topics": [
+            "Prompt-as-Code 理念",
+            "提示词原子化与结构化",
+            "逆向工程分析",
+            "Agent Skill 集成",
+            "AI 图像生成可控性"
+          ],
+          "learningPath": "建议先通过浏览网站和案例集，理解何为“结构化提示词”及其效果。随后，学习项目中的模板文档，掌握如何拆解和组合提示词原子。最后，可以尝试安装 Agent Skill，并通过 CLI 工具了解如何将提示词资源集成到自动化工作流中，从而完成从理论到实践的完整学习。"
+        },
+        "build": {
+          "title": "PromptForge",
+          "description": "一个个人提示词工具箱，让你用结构化模板批量生成多主题图像，并通过一个极简画廊浏览和复制结果。",
+          "features": [
+            "按主题分类浏览预设的提示词模板",
+            "支持一键复制完整提示词文本",
+            "手动输入参数替换模板中的占位符",
+            "静态展示一些示例生成结果供参考",
+            "完全离线可用，无需连接任何外部模型"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# dependencies
+/node_modules
+/.npm-cache
+
+# Next.js
+/.next
+/out
+
+# local secrets
+.env
+.env.local
+.env.*.local
+
+# logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# pipeline scratch output
+/data/smoke.json
+/data/*.tmp
