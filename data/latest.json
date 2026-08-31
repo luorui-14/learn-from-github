@@ -1,203 +1,7 @@
 {
-  "weekOf": "2026-08-24",
-  "generatedAt": "2026-08-27T06:12:50.435Z",
+  "weekOf": "2026-08-31",
+  "generatedAt": "2026-08-31T00:08:50.490Z",
   "repositories": [
-    {
-      "owner": "anthropics",
-      "name": "claude-plugins-community",
-      "fullName": "anthropics/claude-plugins-community",
-      "url": "https://github.com/anthropics/claude-plugins-community",
-      "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
-      "primaryLanguage": "Python",
-      "totalStars": 2267,
-      "starsThisWeek": 1759,
-      "analysis": {
-        "summary": "这是一个由 Anthropic 维护的社区插件市场只读镜像，为 Claude Cowork 和 Claude Code 提供可安装的第三方插件列表。它并非插件的实际代码仓库，而是一个经过审核的插件注册表，所有内容均通过官方提交和自动审核系统生成。",
-        "whyItMatters": "该项目代表了 LLM 应用生态从封闭模型向可扩展平台演进的关键一步。通过提供一个安全、受控的社区插件市场，Anthropic 正在为 Claude 构建类似 IDE 或浏览器扩展的生态体系，这有助于增强用户粘性并激发创新。目前项目获得大量关注，反映了开发者对构建和分享 AI 工具插件的强烈需求。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认该仓库是一个只读镜像，其核心是 .claude-plugin/marketplace.json 文件。该文件由 Anthropic 的内部审核流水线每夜自动同步，包含了所有经过提交、自动化安全扫描和人工审核批准的社区插件列表。用户通过 Claude Cowork 的网页界面或 Claude Code 的命令行工具指向此仓库，即可安装列表中的插件。",
-        "tags": [
-          "插件市场",
-          "Claude Cowork",
-          "Claude Code",
-          "只读镜像",
-          "社区贡献"
-        ],
-        "technologies": [
-          "Python",
-          "JSON"
-        ],
-        "learn": {
-          "topics": [
-            "插件市场架构",
-            "基于 Git 的只读镜像分发",
-            "自动化安全扫描流水线",
-            "JSON 注册表设计",
-            "命令行工具插件管理"
-          ],
-          "learningPath": "先理解 JSON 作为数据交换格式在插件注册与发现中的作用，再研究 Claude Code 如何通过 Git 仓库管理插件市场，最后动手设计一个类似的市场注册表并模拟客户端查询过程。"
-        },
-        "build": {
-          "title": "PluginMarket Proxy",
-          "description": "一个极简的本地插件市场代理，用于验证插件元数据格式并模拟安装流程，帮助理解 Claude 插件市场的工作机制。",
-          "features": [
-            "解析并验证 marketplace.json 格式",
-            "模拟从 GitHub 仓库拉取插件元数据",
-            "检查插件条目的必填字段完整性",
-            "提供本地命令行接口查看可用插件列表",
-            "生成虚拟的安装状态快照"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "AprilNEA",
-      "name": "OpenLogi",
-      "fullName": "AprilNEA/OpenLogi",
-      "url": "https://github.com/AprilNEA/OpenLogi",
-      "description": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
-      "primaryLanguage": "Rust",
-      "totalStars": 16934,
-      "starsThisWeek": 7078,
-      "analysis": {
-        "summary": "OpenLogi 是一个用 Rust 编写的原生、本地优先的 Logitech Options+ 替代品。它允许用户在不安装官方软件、不创建账户、不发送遥测数据的情况下，通过 HID++ 和 UVC 协议直接管理 Logitech 的鼠标、键盘和摄像头，实现按键重映射、DPI 调节、SmartShift 控制和摄像头硬件参数设置等高级功能。",
-        "whyItMatters": "OpenLogi 解决了 Logitech 官方软件 Options+ 长期存在的痛点：臃肿、要求账户登录、收集遥测数据，且不支持 Linux 平台。该项目通过轻量、离线、跨平台（macOS、Linux、Windows）的原生实现，将设备控制权完全交还给用户。其短时间内获得大量关注，反映了用户对隐私友好、无捆绑、高性能工具软件日益增长的需求，以及开源社区在硬件外设管理领域的强大替代能力。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 OpenLogi 通过 HID++ 协议与 Logitech 设备（鼠标、键盘、摄像头等）直接通信，以原生方式读写设备硬件配置。它采用客户端-代理架构：一个后台代理进程（openlogi-agent）负责所有设备 I/O 操作，图形界面（GUI）和命令行界面（CLI）作为客户端连接到代理。用户的所有配置存储在一个纯文本 TOML 文件中，应用通过读取该文件来应用按键重映射、DPI 调整和 SmartShift 设置。对于摄像头，它直接通过 UVC 协议将图像控制参数写入硬件，而非依赖软件层，确保设置在所有应用（如 Meet、Zoom、OBS）中全局生效。",
-        "tags": [
-          "Rust",
-          "HID++",
-          "Logitech",
-          "本地优先",
-          "开源替代"
-        ],
-        "technologies": [
-          "Rust",
-          "GPUI",
-          "TOML",
-          "HID++",
-          "UVC"
-        ],
-        "learn": {
-          "topics": [
-            "HID++ 协议",
-            "HID 报告描述符",
-            "UVC（USB Video Class）协议",
-            "Rust 中的进程间通信（IPC）",
-            "TOML 配置文件解析"
-          ],
-          "learningPath": "建议从学习 HID++ 协议的基本概念和 HID 报告描述符开始，理解人机交互设备（HID）的通信原理。接着，可以阅读 Solaar 等开源实现来理解 HID++ 的实践。然后，学习 TOML 配置文件的解析和 Rust 中的进程间通信，最后通过构建一个简单的按键重映射工具来实践这些知识。"
-        },
-        "build": {
-          "title": "KeyMapper Lite",
-          "description": "一个极简的本地化工具，用于在 macOS 上为 Logitech 鼠标重映射按键，通过 TOML 文件配置，无需后台服务或 GUI。",
-          "features": [
-            "监测鼠标按键事件，并模拟新的键盘输入",
-            "从一个 TOML 配置文件中读取按键映射规则",
-            "支持长按和短按同一按键触发不同操作",
-            "作为一个简单的命令行工具运行，无图形界面",
-            "提供基础的日志输出，方便调试和确认配置是否生效"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "modular",
-      "name": "modular",
-      "fullName": "modular/modular",
-      "url": "https://github.com/modular/modular",
-      "description": "The Modular Platform (includes MAX & Mojo)",
-      "primaryLanguage": "Mojo",
-      "totalStars": 29231,
-      "starsThisWeek": 1984,
-      "analysis": {
-        "summary": "Modular Platform 是一个面向 AI 开发和部署的统一平台，其开源仓库包含了下一代 AI 编程语言 Mojo 的编译器与标准库，以及用于高性能 AI 推理的 MAX 框架。该平台旨在通过一个整合的生态系统，简化从模型开发到生产推理的整个流程。",
-        "whyItMatters": "它试图解决 AI 领域软件碎片化的问题，通过 Mojo 语言和 MAX 框架提供从开发到部署的一体化解决方案。Mojo 旨在结合 Python 的易用性和 C 语言的性能，被视为 AI 基础设施的重要探索方向。该项目近期关注度高，反映了开发者对能够简化生产级 AI 应用构建、并提升推理性能的新一代工具和语言的强烈需求。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Modular Platform 仓库包含多个开源组件：Mojo 编译器（/KGEN），Mojo 标准库（/mojo/stdlib），MAX 加速库（/max/kernels），一个提供 OpenAI 兼容端点的 MAX 推理服务器（/max/python/max/serve），以及基于 Python 的 MAX 模型流水线（/max/python/max/pipelines）。这些组件共同构成了一个从模型开发到高性能部署的统一平台，用户可以通过 Mojo 语言编写高性能计算内核，并通过 MAX 框架进行模型推理与服务。",
-        "tags": [
-          "AI推理",
-          "编程语言",
-          "Mojo",
-          "模型部署",
-          "MAX框架"
-        ],
-        "technologies": [
-          "Mojo",
-          "Python"
-        ],
-        "learn": {
-          "topics": [
-            "Mojo 语言特性",
-            "AI 模型推理服务化",
-            "计算图（Pipeline）的构建",
-            "OpenAI API 兼容性设计",
-            "加速器编程模型"
-          ],
-          "learningPath": "建议先了解 Mojo 语言的基本语法和设计理念，再学习 MAX 框架如何通过 Python 编排模型流水线并启动推理服务，最后可以尝试阅读标准库或加速库的源码，理解其如何实现高性能计算。"
-        },
-        "build": {
-          "title": "MiniInferServe",
-          "description": "构建一个轻量级 AI 推理服务，使用 Python 实现类似 MAX Serve 的 OpenAI 兼容 API 端点，能够加载模型并响应 /v1/chat/completions 请求。",
-          "features": [
-            "提供 OpenAI 兼容的 /v1/chat/completions 端点",
-            "支持加载 HuggingFace 上的文本生成模型",
-            "实现基础的推理流水线处理",
-            "通过 Docker 容器化部署服务"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "basecamp",
-      "name": "omarchy",
-      "fullName": "basecamp/omarchy",
-      "url": "https://github.com/basecamp/omarchy",
-      "description": "Beautiful, Modern & Opinionated Linux",
-      "primaryLanguage": "Shell",
-      "totalStars": 32170,
-      "starsThisWeek": 5186,
-      "analysis": {
-        "summary": "Omarchy 是一个由 DHH 创建的、观点鲜明的 Linux 发行版，旨在提供美观、现代且开箱即用的桌面体验。它并非一个从零构建的全新系统，而是通过精心挑选和预配置一系列软件与工具，将 Linux 桌面整合成一个高度统一、符合特定工作流的产品。",
-        "whyItMatters": "在 Linux 桌面环境高度碎片化、用户需要花费大量时间进行个性化配置的背景下，Omarchy 代表了一种‘用户只做选择，而非从零构建’的趋势。它通过极致的预配置和观点输出，降低了开发者或有特定审美用户的使用门槛，让 Linux 桌面可以像商业操作系统一样提供一致且精致的使用体验，其受欢迎程度反映了市场对高度集成化、以开发者体验为核心的桌面操作系统的需求。",
-        "howItWorks": "根据 README 和公开的项目信息，目前可以确认 Omarchy 是一个基于 Linux 的发行版，其核心是提供一套预配置方案。它通过一份详尽的用户手册指导用户。手册内容表明，系统通过预装和配置 GNOME 桌面环境、特定主题、预设快捷键、剪贴板管理工具、Neovim 编辑器、AI 工具、开发工具包以及一系列 Shell 脚本和函数，来提供一个开箱即用、观点鲜明的操作体验。具体的自动化配置逻辑可能由手册中提到的 `Omarchy CLI` 工具和 `dotfiles` 仓库实现，但未提供更多实现细节。",
-        "tags": [
-          "linux-distribution",
-          "dotfiles",
-          "desktop-customization",
-          "opinionated-design",
-          "developer-tools"
-        ],
-        "technologies": [
-          "Shell",
-          "GNOME Desktop Environment",
-          "Neovim",
-          "Linux Kernel"
-        ],
-        "learn": {
-          "topics": [
-            "Linux 桌面环境定制 (GNOME)",
-            "Dotfiles 与 Shell 脚本自动化",
-            "命令行工具 (CLI) 设计",
-            "开发环境整合 (Neovim, Git, zsh)",
-            "观点驱动的系统设计 (Opinionated Design)"
-          ],
-          "learningPath": "建议先阅读项目手册中的“Getting Started”和“Navigation”部分，建立对系统整体设计哲学和基本操作的认知。然后，可以深入学习“Dotfiles”和“Shell Tools”部分，理解如何通过脚本和配置文件实现系统定制。最后，可以研究“Omarchy CLI”和“Hotkeys”背后的原理，并尝试复现其中的自动化配置逻辑。"
-        },
-        "build": {
-          "title": "QuickArch",
-          "description": "一个简易的安装后配置脚本，用于将全新 Arch Linux 环境快速转换为具有统一视觉风格、预设快捷键和常用开发工具的定制化桌面。",
-          "features": [
-            "安装并启用 GNOME 桌面环境及必要组件",
-            "应用预设的 GTK/Shell 主题、图标和字体",
-            "通过 keybinding 配置文件设定常用窗口管理和应用启动快捷键",
-            "安装并初始化 Neovim、Git、zsh 等开发工具集",
-            "提供一个命令行工具来切换明暗主题"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
     {
       "owner": "freestylefly",
       "name": "awesome-gpt-image-2",
@@ -205,46 +9,244 @@
       "url": "https://github.com/freestylefly/awesome-gpt-image-2",
       "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
       "primaryLanguage": "JavaScript",
-      "totalStars": 21946,
-      "starsThisWeek": 9477,
+      "totalStars": 25629,
+      "starsThisWeek": 13413,
       "analysis": {
-        "summary": "这是一个将 AI 图像生成提示词工程化的开源项目，核心是收集并逆向工程了 500 多个由 GPT-Image2 生成的优秀案例，提炼出 20 多套工业级模板。它将提示词视为代码（Prompt as Code），通过原子化、结构化的方式，让 AI 图像生成从随机的“魔法”变成可控制、可复用、可集成到自动化工作流的生产力工具。",
-        "whyItMatters": "它解决了 AI 图像生成中提示词不稳定、难以复用和难以集成到自动化系统的问题。随着 AI 图像生成从‘能不能生成’转向‘能不能稳定可控地生成’，该项目将提示词沉淀为结构化资产，体现了‘Prompt as Code’的趋势，满足了开发者、设计师和 Agent 系统对批量、可控、工业化生成的迫切需求。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认该项目将大量文本形式的图像生成提示词，通过逆向工程提炼为结构化的模板和原子模块（如主体、光照、材质、布局等）。它将这些模板分类整理成文档，并提供一个独立的 Agent Skill（npm 包），供 Claude Code、Codex 等 AI 编程助手调用，以在自动化工作流中快速选择风格和模板。项目还配套了一个网站，用于浏览图库和提示词。",
+        "summary": "这是一个名为 awesome-gpt-image-2 的工业级提示词引擎与模板库。它将 500 多个社区生成的 GPT-Image2 图像案例进行逆向工程，提炼出 20 多套工业级模板，并以“Prompt as Code”的理念将其结构化，使其更易于被 AI Agent 和自动化工作流复用。",
+        "whyItMatters": "该项目解决了 AI 图像生成中“从可用到可控、可复用”的挑战。随着 GPT-Image2 等模型让图像生成变得简单，稳定输出符合商业级要求的布局、文字和风格变得至关重要。它将散乱的提示词案例转化为结构化资产，代表了 Prompt Engineering 从技巧向一门正式工程化实践演进的趋势，并且将 Agent 和自动化工作流作为一等公民，这对于构建生产级的 AI 应用具有重要参考价值。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认该项目将杂乱的图像生成提示词案例，逆向工程为结构化的模板。其核心思路是将提示词分解为原子化组件（如主体、光照、材质、布局），形成可组合的 schema。项目通过一个 Vite + React 构建的网站来展示这些案例和模板，并提供了 npm 包和 Agent Skill，让自动化脚本或 AI Agent 能通过安装命令直接调用这些结构化提示词。",
         "tags": [
           "prompt-engineering",
           "image-generation",
+          "agent-tool",
           "template-library",
-          "agent-skill",
           "reverse-engineering"
         ],
         "technologies": [
-          "JavaScript",
-          "Vite",
           "React",
+          "Vite",
+          "JavaScript",
           "npm",
-          "Agent Skills",
-          "GPT-Image2"
+          "Supabase",
+          "Stripe"
         ],
         "learn": {
           "topics": [
-            "Prompt as Code",
-            "提示词逆向工程",
-            "原子化提示词设计",
-            "AI Agent 工作流集成",
-            "图像生成风格模板"
+            "Prompt Engineering 与结构化设计",
+            "AI Agent 工具与 Skill 开发",
+            "基于 Vite 和 React 的前端构建",
+            "npm 包发布与管理",
+            "逆向工程思维"
           ],
-          "learningPath": "先理解 Prompt Engineering 的基本概念，然后学习该项目如何将提示词‘代码化’和结构化，接着研究其‘原子 Schema’设计，最后实践如何将这种结构化提示词集成到 Agent 自动化工作流中。"
+          "learningPath": "建议先理解 Prompt Engineering 的基本概念，然后学习如何将自然语言提示词结构化为 JSON 或 Schema，接着研究如何将这些结构化数据集成到 Vite + React 前端项目中，并最终探索如何为 AI Agent 开发可安装的 Skill 或工具。"
         },
         "build": {
-          "title": "PromptUI Workshop",
-          "description": "一个聚焦于 UI 界面生成的迷你提示词工作坊，从案例逆向中提炼出结构化的提示词原子模块，用户可在线组合生成并预览简单的 UI mockup。",
+          "title": "PromptCanvas",
+          "description": "一个小型 Web 应用，允许用户浏览模板化的图像生成提示词案例库，并提交参数生成自定义提示词。",
           "features": [
-            "提供 10 个 UI 界面的逆向案例及其原始提示词",
-            "将提示词拆解为布局、组件、配色、文案等原子模块",
-            "用户通过拖拽或选择模块组合成新的提示词",
-            "调用 Gemini 或 OpenAI 生成 UI 图像并展示",
-            "对比生成图像与预期效果，展示提示词模块的影响"
+            "按类别（如 UI、摄影、海报）筛选和浏览案例",
+            "展示案例图片和对应的结构化提示词文本",
+            "一个简单的提示词组装器，用户选择模板和参数后生成文本",
+            "一键复制提示词到剪贴板",
+            "一个静态的案例详情页，展示单个案例的图片和文本"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "anthropics",
+      "name": "claude-plugins-community",
+      "fullName": "anthropics/claude-plugins-community",
+      "url": "https://github.com/anthropics/claude-plugins-community",
+      "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+      "primaryLanguage": "Python",
+      "totalStars": 2874,
+      "starsThisWeek": 2162,
+      "analysis": {
+        "summary": "该项目是 Anthropic 为 Claude Cowork 和 Claude Code 提供的社区插件市场镜像。它并不直接存储插件源代码，而是作为一个只读的索引仓库，通过一个自动同步的 JSON 文件列出所有经过安全审核的社区插件，供用户安装使用。",
+        "whyItMatters": "它解决了 Claude 平台插件生态从封闭走向开放的问题，为开发者提供了一个受信的、经过自动化安全审核的贡献渠道。近期活跃度飙升表明，随着 AI 编程助手 Claude Code 的普及，用户对扩展其功能、定制化工作流的社区需求正在爆发，这代表了 AI 工具向可扩展平台演进的关键趋势。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认这是一个只读的镜像仓库。其核心是通过一个 .claude-plugin/marketplace.json 文件作为社区插件的清单，该文件由 Anthropic 的内部审查流程每日自动同步而来。用户通过 Claude Code 的 CLI 命令添加此仓库为 marketplace 源，即可安装列表中经过审核的插件。",
+        "tags": [
+          "Plugin Marketplace",
+          "Claude Code",
+          "Community Registry",
+          "Read-only Mirror"
+        ],
+        "technologies": [
+          "Python",
+          "JSON",
+          "Claude Code CLI"
+        ],
+        "learn": {
+          "topics": [
+            "Plugin marketplace 架构",
+            "CLI 工具扩展机制",
+            "JSON-based registry 设计",
+            "社区贡献与审核流程",
+            "Git 仓库作为分发渠道"
+          ],
+          "learningPath": "建议先理解插件化架构的基本概念，然后学习 JSON 作为 plugin registry 的索引方式，再通过搭建一个类似的市场模拟工具，掌握 CLI 工具的 marketplace 注册与安装流程。"
+        },
+        "build": {
+          "title": "MiniMarket CLI",
+          "description": "一个用于浏览和安装社区插件的本地命令行工具，模拟 marketplace 同步机制。",
+          "features": [
+            "从本地 marketplace.json 读取并展示可用插件列表",
+            "支持关键词搜索插件",
+            "模拟通过 Git 协议安装指定插件到本地目录",
+            "记录并管理已安装的插件状态"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "tt-a1i",
+      "name": "archify",
+      "fullName": "tt-a1i/archify",
+      "url": "https://github.com/tt-a1i/archify",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "primaryLanguage": "JavaScript",
+      "totalStars": 34470,
+      "starsThisWeek": 18103,
+      "analysis": {
+        "summary": "Archify 是一个面向 AI 编程助手的 Agent Skill，能将代码库或自然语言描述的系统架构，转化为精美、可验证的交互式系统地图。它并非一个通用绘图工具，而是通过 AI 生成结构化的 JSON 中间表示，再由 Node.js 引擎确定性地编译为自包含的 HTML/SVG 文件，并内置了搜索、路径追踪、视角对比等基于事实的交互功能。",
+        "whyItMatters": "Archify 解决了开发团队在沟通系统架构时，手绘图或通用绘图工具（如 Mermaid）难以保证与源代码一致、缺乏可验证性且难以交互的问题。它当前值得关注的原因在于，其结合了 AI Agent 的生成能力和确定性的工程管线，将架构图从一次性的‘画作’转变为可审查、可交互、可溯源的‘通信制品’，这体现了 AI 辅助开发从代码生成走向设计文档自动化和可信化的趋势。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Archify 的核心机制是：AI Agent 根据用户描述生成一份类型化的 JSON 中间表示（IR），然后 Archify 的 Node.js 渲染引擎将此 JSON 确定性地编译为自包含的 HTML/SVG 交互式图表。其工作流包含生成、验证、预览和交付四个步骤，其中验证环节会进行模式、布局、路由等多重检查，失败时返回机器可读的修复凭据，确保交付的图表与源数据严格一致。项目还提供了桌面端实时预览循环，仅在验证通过后刷新视图。",
+        "tags": [
+          "architecture-diagram",
+          "agent-skill",
+          "visualization",
+          "cli-tool",
+          "developer-tools"
+        ],
+        "technologies": [
+          "JavaScript",
+          "Node.js",
+          "HTML",
+          "SVG",
+          "JSON"
+        ],
+        "learn": {
+          "topics": [
+            "类型化中间表示 (Typed JSON IR) 在图表生成中的应用",
+            "确定性渲染与布局判断",
+            "多模式原子化验证管线 (Validation Pipeline)",
+            "自包含交互式 HTML 图表的设计",
+            "Agent Skill 与 CLI 的集成模式"
+          ],
+          "learningPath": "建议先理解 Archify 的 JSON IR Schema 如何定义节点、关系和路由，然后学习其验证管线如何确保数据完整性，最后尝试自定义一个主题或布局风格。"
+        },
+        "build": {
+          "title": "MiniMap",
+          "description": "一个极简的 CLI 工具，能根据用户描述的系统架构 JSON 生成一个包含 SVG 节点和连线的交互式 HTML 页面。",
+          "features": [
+            "读取一个自定义的简洁 JSON 架构描述文件",
+            "根据 JSON 中的节点和关系生成 SVG 图形",
+            "支持基本的节点搜索和聚焦高亮",
+            "提供明暗两种主题切换",
+            "导出为单一的、自包含的 HTML 文件"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "omacom",
+      "name": "omarchy",
+      "fullName": "omacom/omarchy",
+      "url": "https://github.com/omacom/omarchy",
+      "description": "Beautiful, Modern & Opinionated Linux",
+      "primaryLanguage": "Shell",
+      "totalStars": 35523,
+      "starsThisWeek": 6692,
+      "analysis": {
+        "summary": "Omarchy 是一个由 Basecamp CTO DHH 创建的、高度个人化的 Linux 发行版。它并非旨在提供一个开箱即用的 ISO 镜像，而是通过一套详尽的文档手册，定义了一个从系统底层到应用层面的、美观且现代的工作环境标准。",
+        "whyItMatters": "Omarchy 代表了 Linux 桌面定制文化（Ricing）的集大成者，它将一个技术大佬的个人工作环境哲学化、文档化，解决了高级用户从零开始构建高效、美观工作环境时面临的选择困难和高昂配置成本。它值得关注是因为它体现了从‘分享配置文件’到‘分享完整工作流和设计理念’的趋势，其高人气表明开发者社区对强引导性、高审美标准的桌面环境有巨大需求。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Omarchy 是一个基于 Arch Linux 的、带有强烈个人审美和偏好的 Linux 发行版。其核心实现方式是通过一个集中的 manual/ 目录来提供详尽的文档和指南，这些指南覆盖了从系统安装、主题配置、快捷键设置到特定应用（如 Neovim、终端、AI 工具）的集成。项目本身更像是一套配置蓝图和规范，指导用户如何构建出一个符合其理念的操作系统，而不是一个包含大量源码的自动化构建工具。",
+        "tags": [
+          "linux",
+          "dotfiles",
+          "ricing",
+          "archlinux",
+          "desktop-environment"
+        ],
+        "technologies": [
+          "Shell",
+          "Arch Linux"
+        ],
+        "learn": {
+          "topics": [
+            "Arch Linux 系统定制",
+            "dotfiles 管理与版本控制",
+            "平铺式窗口管理器配置",
+            "Shell 脚本自动化",
+            "系统审美与主题设计"
+          ],
+          "learningPath": "建议首先学习 Arch Linux 的基本安装和包管理，随后研究 dotfiles 管理工具（如 chezmoi 或 GNU Stow），接着深入了解一种平铺式窗口管理器（如 Hyprland）的配置，最后探索如何用 Shell 脚本将整个过程自动化。"
+        },
+        "build": {
+          "title": "MinArchRicer",
+          "description": "一个轻量级的 Arch Linux 安装后配置脚本，能一键将裸机系统转变为美观、带有预设工作流的桌面环境。",
+          "features": [
+            "一键安装和配置基于 Hyprland 的桌面环境",
+            "预置一套美观的 Catppuccin 主题配色方案",
+            "自动安装和配置 Neovim、终端、浏览器等核心开发工具",
+            "集成一个基于 Fuzzel 或 Rofi 的应用启动器并绑定快捷键",
+            "使用 Ansible 或 Shell 脚本完成所有配置，确保可重复执行"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "apache",
+      "name": "maka",
+      "fullName": "apache/maka",
+      "url": "https://github.com/apache/maka",
+      "description": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+      "primaryLanguage": "TypeScript",
+      "totalStars": 4186,
+      "starsThisWeek": 1973,
+      "analysis": {
+        "summary": "Apache Maka 是一个正在孵化中的本地优先 AI Agent 工作区。它不只是一个聊天界面，而是将 Agent 的每一次思考、工具调用和决策都记录为一份不可篡改的、仅追加的执行日志，使用户可以随时回溯、恢复或分支会话。所有数据和运算都默认在你自己的机器上完成，模型连接完全由你掌控。",
+        "whyItMatters": "它解决的问题是当前 AI Agent 普遍存在的“黑盒”困境：用户无法可靠地审计 Agent 的决策过程，也无法在会话中断或出错后精确恢复。Maka 通过使用 append-only 事件日志作为唯一真实来源，将 Agent 的执行过程变成了可审计、可恢复、可分支的确定性记录。在 AI 辅助编程和自动化工作日益普及的当下，这种对透明度和数据主权的强调，代表了一种从“无状态调用”到“可验证工作流”的重要趋势。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Maka 的运行时核心是一个本地优先的 Agent 工作区，所有 Agent 交互（模型消息、工具调用、工具结果、权限决策和终止事件）都被记录为一个仅追加（append-only）的事件日志。这个日志是系统状态的唯一真实来源，UI 和后续的模型调用都基于此日志构建视图。其架构通过一个名为 Runtime Host 的单一入口点来管理 Agent 生命周期，并连接桌面、CLI 和评估工具。工具在一个沙箱边界内执行，需要权限才能离开沙箱。系统还支持会话恢复、分支和基于不可变记录的实验评估。",
+        "tags": [
+          "local-first",
+          "ai-agent",
+          "event-sourcing",
+          "workspace",
+          "electron"
+        ],
+        "technologies": [
+          "TypeScript",
+          "Electron",
+          "React",
+          "Node.js",
+          "SQLite",
+          "Rust"
+        ],
+        "learn": {
+          "topics": [
+            "Append-only 事件日志与状态重建",
+            "Agent 工具沙箱与权限控制",
+            "本地优先（local-first）的 Agent 架构",
+            "基于事件流的 Agent 会话恢复与分支",
+            "Electron 应用与 Node.js 后端集成"
+          ],
+          "learningPath": "建议先理解 Agent 工作流中状态管理的重要性，然后学习 append-only 事件日志的数据模型设计，接着实践如何基于该日志实现会话恢复与分支，最后探索如何将 Agent 运行时集成到 Electron 桌面应用中。"
+        },
+        "build": {
+          "title": "AgentLog",
+          "description": "一个本地优先的 Agent 工作区，将 Agent 对话记录为不可篡改的日志，并支持回溯与恢复。",
+          "features": [
+            "以 append-only 日志的方式记录 Agent 的完整执行过程",
+            "在本地隔离的工具沙箱中安全执行 Bash、文件读写等操作",
+            "提供会话恢复功能，支持从日志中重建 Agent 状态",
+            "实现基本的权限控制，对危险操作进行拦截和确认",
+            "基于 Electron 的桌面应用界面，展示会话时间线和工具调用结果"
           ],
           "difficulty": "intermediate"
         }
