@@ -1,267 +1,257 @@
 {
-  "weekOf": "2026-09-07",
-  "generatedAt": "2026-09-07T03:10:40.797Z",
+  "weekOf": "2026-09-14",
+  "generatedAt": "2026-09-14T03:44:18.885Z",
   "repositories": [
     {
-      "owner": "tt-a1i",
-      "name": "archify",
-      "fullName": "tt-a1i/archify",
-      "url": "https://github.com/tt-a1i/archify",
-      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
-      "primaryLanguage": "JavaScript",
-      "totalStars": 51072,
-      "starsThisWeek": 17190,
-      "analysis": {
-        "summary": "Archify 是一个专为 AI 编程 Agent（如 Cursor、Claude Code）设计的技能插件，旨在将代码库或系统描述直接转化为精美的、可交互的架构图。它通过 Agent 生成类型化的 JSON 中间表示，再由 Node.js 系统进行确定性编译和严格验证，最终产出一个自包含的 HTML 文件，支持多种图表类型、主题和演示模式。",
-        "whyItMatters": "Archify 解决了 AI 生成的架构图缺乏可信度、难以迭代和无法进行版本对比的问题。它通过严格验证和确定性编译，确保 Agent 产出的图表是“可验证的”，而不仅仅是“看起来不错”。在当前 AI 辅助开发普及的趋势下，它将文档从主观猜测转变为基于代码事实的、可审计的制品，使得架构评审、变更对比（Delta）和团队沟通更加可靠。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Archify 的核心工作流是：Agent 根据用户对系统或代码库的描述生成一份类型化的 JSON 中间表示（IR），随后由 Node.js 后端读取该 IR 文件。后端会执行一系列确定性的验证和布局计算，包括原子性校验（Schema、Layout、HTML/SVG、Route 等），最终编译生成一个自包含的 HTML 文件。该 HTML 文件内嵌了 SVG 图表和交互逻辑，支持在浏览器中直接进行节点搜索、路径追踪、角色对比和故事线播放等操作，并能导出 PNG 或 SVG 格式。",
-        "tags": [
-          "agent-skill",
-          "architecture-diagram",
-          "json-ir",
-          "nodejs",
-          "documentation"
-        ],
-        "technologies": [
-          "JavaScript",
-          "Node.js",
-          "HTML",
-          "SVG",
-          "JSON"
-        ],
-        "learn": {
-          "topics": [
-            "类型化中间表示（Typed IR）设计",
-            "JSON Schema 与验证",
-            "Node.js 脚本生成 SVG",
-            "自包含 HTML 交互设计",
-            "前端图表交互（如搜索、键盘快捷键）"
-          ],
-          "learningPath": "建议先学习如何编写一个简单的 JSON Schema 来定义图表结构，然后尝试用 Node.js 编写脚本将 JSON 数据转换为 SVG 元素，最后实现一个基础的 HTML 页面来加载和显示这些 SVG，并逐步添加键盘事件和缩放功能。"
-        },
-        "build": {
-          "title": "Mini-Architect",
-          "description": "一个为开发者简历提供的轻量级在线架构图生成器，通过表单填写项目信息，生成可交互的 SVG 架构图并导出为 PNG。",
-          "features": [
-            "用户通过表单填写组件名称、类型和连接关系",
-            "基于 Canvas/SVG 实时渲染出拓扑图",
-            "支持节点拖拽以调整布局",
-            "一键导出为 PNG 图片",
-            "提供 3 种预设的配色主题"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "magnitudedev",
-      "name": "magnitude",
-      "fullName": "magnitudedev/magnitude",
-      "url": "https://github.com/magnitudedev/magnitude",
-      "description": "Open source inference server that runs the best local models for your hardware, plugged into the agent you already use. Works with Pi, OpenCode, Hermes, OpenClaw, Codex, Claude Code, Oh My Pi, and Cline.",
-      "primaryLanguage": "TypeScript",
-      "totalStars": 3732,
-      "starsThisWeek": 1961,
-      "analysis": {
-        "summary": "Magnitude 是一个开源的本地推理服务器，旨在让开发者无需关心复杂配置，即可在自己的硬件上运行最适合的私有大型语言模型。它通过自动检测硬件性能，从目录中推荐并下载匹配的模型，然后无缝集成到用户正在使用的编程代理中，实现完全离线、零成本的 AI 编码辅助。",
-        "whyItMatters": "随着开发者对编码助手依赖加深，隐私泄露、API 成本和网络延迟愈发成为痛点。Magnitude 解决了让大模型在消费级硬件上高效运行这一难题，将复杂的硬件适配、模型量化和代理集成过程自动化，体现了 AI 工具从云端中心化向本地化、私有化部署的明确趋势，降低了开发者使用本地强大大模型的门槛。",
-        "howItWorks": "根据 README 和 package.json，Magnitude 首先通过 CLI 对用户硬件进行性能评估（profiling），然后由内置的推荐引擎从模型目录中筛选出最适合当前硬件配置的模型。用户选定模型后，系统会自动下载、应用推理优化（如推测解码、并发调优），并作为后台服务运行。当代理发起请求时，推理服务会按需加载模型，空闲或内存不足时自动卸载。其生态通过集成不同的编码代理（如 Pi、Cline）来接收指令，或通过内置 harness 直接运行。package.json 显示项目采用了 monorepo 架构，核心推理引擎（inference）使用 Rust 编写，CLI 和 Web 等前端部分使用 TypeScript，并利用 Bun 进行包管理和脚本执行。",
-        "tags": [
-          "inference-server",
-          "local-llm",
-          "agent-integration",
-          "privacy",
-          "hardware-aware"
-        ],
-        "technologies": [
-          "TypeScript",
-          "Rust",
-          "Bun",
-          "llama.cpp",
-          "GGUF"
-        ],
-        "learn": {
-          "topics": [
-            "本地 LLM 推理与硬件适配",
-            "GGUF 模型量化与选择策略",
-            "代理（Agent）集成模式",
-            "模型生命周期管理（按需加载/卸载）",
-            "Rust 与 TypeScript 混合的 Monorepo 架构"
-          ],
-          "learningPath": "建议先学习 GGUF 模型量化的基本概念和不同硬件（内存、带宽）对推理速度的影响，然后通过 README 了解 Magnitude 的代理集成模式。接着，动手实践，使用 Ollama 手动部署一个量化模型，理解模型加载与卸载的生命周期。最后，可以尝试阅读项目中 inference 目录下的 Rust 代码，学习如何与 llama.cpp 底层交互，以及 CLI 部分如何使用 TypeScript 进行硬件探测和用户交互。"
-        },
-        "build": {
-          "title": "LocalModelFit",
-          "description": "一个轻量级本地模型适配器，通过调用 Ollama 或 llama.cpp 的 API 来自动检测硬件（模拟），并根据预设规则推荐最合适的量化模型，用户可一键切换和运行。",
-          "features": [
-            "模拟硬件探测（CPU核心数、内存大小）",
-            "基于预设规则推荐 2-3 个 GGUF 量化模型",
-            "通过 Ollama REST API 拉取和运行模型",
-            "提供简单的 Web 界面展示硬件信息和模型列表",
-            "支持模型一键切换并发送测试提示词"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "THU-MAIC",
-      "name": "OpenMAIC",
-      "fullName": "THU-MAIC/OpenMAIC",
-      "url": "https://github.com/THU-MAIC/OpenMAIC",
-      "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
-      "primaryLanguage": "TypeScript",
-      "totalStars": 32508,
-      "starsThisWeek": 9193,
-      "analysis": {
-        "summary": "OpenMAIC 是一个开源的多智能体交互式课堂平台，可将任意主题或学习材料一键转化为包含幻灯片、测验、互动模拟和项目式学习活动的沉浸式 AI 课堂。它由清华大学相关团队开发，于 2026 年 8 月发布 v1.0.0 版本，新增了 Agent 工作台，支持通过对话式交互规划、生成和修订课程，并提供持久化会话与素材上传功能。",
-        "whyItMatters": "该项目解决了传统在线教育中教学内容静态、缺乏互动性与个性化的问题。它通过多智能体协作模拟真实课堂中的教师与同伴互动，结合语音、白板与实时反馈，创造出沉浸式学习体验。近期因 v1.0.0 引入 Agent 工作台和持久化会话，大幅降低了课程创建与迭代的门槛，并因其模型无关的架构设计、丰富的集成选项（如本地 AI 和开源 ASR）以及活跃的社区生态，在 GitHub 上获得了爆发式增长，体现了 AI 原生教育工具从辅助内容生成向全流程教学代理演进的趋势。",
-        "howItWorks": "根据 README 和 package.json，OpenMAIC 是一个基于 Next.js 16 与 React 19 的全栈 Web 应用，前端使用 TypeScript、Tailwind CSS 和 shadcn/ui 构建交互界面。其多 Agent 协作的核心由 LangGraph 实现，负责编排 AI 教师与同伴的对话、白板绘制与课程生成流程。后端通过 AI SDK（支持 OpenAI、Anthropic、Google 等多家提供商）调用 LLM 进行内容生成，并结合内部的 @openmaic/* 系列包（dsl、generation、renderer、editor、storage 等）完成课程结构定义、内容生成、渲染与持久化。该平台还集成了 TTS（如 VoxCPM2）、ASR（如 FunASR）和本地媒体提取工具 ffmpeg，以支持语音讲解、语音识别和音视频素材处理。公开资料明确显示利用了 LangGraph 进行多 Agent 编排，但具体 Agent 间的通信协议、任务分配和状态管理细节未在材料中展开，因此无法确认其内部实现粒度。",
-        "tags": [
-          "multi-agent",
-          "education",
-          "AI-classroom",
-          "open-source",
-          "langgraph"
-        ],
-        "technologies": [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "LangGraph",
-          "AI SDK",
-          "Tailwind CSS",
-          "Shadcn UI",
-          "ffmpeg",
-          "FunASR",
-          "VoxCPM2",
-          "PostgreSQL",
-          "Docker"
-        ],
-        "learn": {
-          "topics": [
-            "LangGraph 多 Agent 编排",
-            "AI SDK 统一 LLM 接口与流式响应",
-            "Next.js 16 全栈开发与 React 19 服务端组件",
-            "课程内容结构化定义与 DSL 设计",
-            "TTS 与 ASR 在教育场景中的实时集成"
-          ],
-          "learningPath": "先掌握 LangGraph 的基本概念与 Agent 编排模式，再学习如何基于 AI SDK 统一调用不同 LLM 提供商，接着了解 Next.js 全栈项目中前后端协作与流式响应的实现方式，最后可通过阅读 @openmaic/dsl 和 @openmaic/renderer 的文档理解课程内容结构化定义与渲染流程。"
-        },
-        "build": {
-          "title": "MiniCourseForge",
-          "description": "一个可让用户输入教学主题并自动生成多页幻灯片与测验的小型网页应用，用于体验多 Agent 协作生成教学内容的流程。",
-          "features": [
-            "输入教学主题，自动生成多页幻灯片与测验的结构化大纲",
-            "使用 LLM 生成每页幻灯片的文本内容、标题与要点",
-            "在浏览器中以 swiper 形式展示幻灯片，并支持翻页浏览",
-            "在幻灯片末尾展示自动生成的简单选择题，并即时判断对错",
-            "支持将生成的幻灯片大纲导出为 JSON 文件，便于后续编辑"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "Gitlawb",
-      "name": "openclaude",
-      "fullName": "Gitlawb/openclaude",
-      "url": "https://github.com/Gitlawb/openclaude",
-      "description": "runs anywhere. uses anything",
-      "primaryLanguage": "TypeScript",
-      "totalStars": 32855,
-      "starsThisWeek": 1944,
-      "analysis": {
-        "summary": "OpenClaude 是一个开源、终端优先的编码 Agent CLI 工具，它打破了特定模型供应商的锁定，允许开发者通过统一的命令行界面，自由切换和调用 OpenAI、Gemini、Ollama 等超过 200 种云端或本地的大语言模型。它整合了代码编辑、文件操作、Agent 任务调度和 MCP 协议等高级功能，为 AI 辅助编程提供了一个灵活且强大的通用入口。",
-        "whyItMatters": "当前 AI 编程工具大多绑定特定模型，OpenClaude 解决的核心痛点是模型供应商锁定问题，它让开发者可以统一、自由地按需选择最合适的模型，无论是追求最强的云端大模型还是使用本地免费模型保护隐私。其近期爆发式增长（周增近 2000 star）反映了开发者社区对开放、可组合、不受限于单一厂商的 AI 工作流的强烈需求，也体现了终端作为高效 AI 交互界面的回归趋势。",
-        "howItWorks": "根据 README 和 package.json，可以确认 OpenClaude 是一个 Node.js（≥22）CLI 工具，通过 npm 全局安装。它通过统一的 `/provider` 命令或环境变量配置不同 LLM 后端，将用户的提示、工具调用、MCP 等请求转换为对应 provider 的 API 调用，并流式返回结果。依赖项中包括 `@modelcontextprotocol/sdk`、`commander`、`execa` 等，表明它支持 MCP 集成、命令行解析和子进程管理。但具体的 Agent 调度、工具执行循环和 provider 抽象层实现细节，无法从材料中获知。",
-        "tags": [
-          "CLI",
-          "Coding Agent",
-          "LLM",
-          "TypeScript",
-          "MCP"
-        ],
-        "technologies": [
-          "TypeScript",
-          "Node.js",
-          "Bun",
-          "Commander",
-          "Model Context Protocol (MCP)",
-          "Ripgrep"
-        ],
-        "learn": {
-          "topics": [
-            "LLM 统一 API 抽象层",
-            "OpenAI 兼容 API 与流式响应",
-            "终端 CLI 工具开发 (Node.js/TypeScript)",
-            "Model Context Protocol (MCP)",
-            "多 Provider 配置管理"
-          ],
-          "learningPath": "建议先掌握 Node.js 和 TypeScript 基础，然后了解 OpenAI 兼容 API 的请求与响应格式，接着学习 CLI 工具开发（如 commander 库），最后尝试集成 MCP 协议实现工具调用。"
-        },
-        "build": {
-          "title": "local-llm-cli",
-          "description": "构建一个简易的 CLI 工具，通过 OpenAI 兼容接口与本地 LLM 交互，实现单轮问答和基础文件操作。",
-          "features": [
-            "通过命令行参数配置 API 地址和模型名称",
-            "向 OpenAI 兼容 API 发送提示并流式输出响应",
-            "支持 --file 参数读取本地文件内容作为上下文",
-            "用彩色输出区分用户提示和 AI 响应",
-            "提供 --help 和 --version 基础命令"
-          ],
-          "difficulty": "beginner"
-        }
-      }
-    },
-    {
-      "owner": "pollen-robotics",
-      "name": "microduck_rl",
-      "fullName": "pollen-robotics/microduck_rl",
-      "url": "https://github.com/pollen-robotics/microduck_rl",
-      "description": "RL training environments for Microduck (mjlab)",
+      "owner": "ayghri",
+      "name": "i-have-adhd",
+      "fullName": "ayghri/i-have-adhd",
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
       "primaryLanguage": "Python",
-      "totalStars": 1833,
-      "starsThisWeek": 1122,
+      "totalStars": 44498,
+      "starsThisWeek": 16740,
       "analysis": {
-        "summary": "Microduck RL 是一个为名为 Microduck 的微型双足机器人（约800克，25厘米高）设计的强化学习训练环境。它利用基于 MuJoCo Warp 的 mjlab 框架，在仿真中训练各种运动技能，如行走、站立、翻滚和踢球，并将训练好的策略通过 ONNX 格式部署到真实机器人上。",
-        "whyItMatters": "它解决了小型双足机器人从仿真到现实迁移的难题，特别是通过精确的执行器建模来处理小质量机器人的动力学挑战。该项目值得关注的原因在于它公开了一套完整的、经过验证的 Sim-to-Real 方案，并展示了如何通过共享观测空间实现多技能策略的热切换，这代表了将强化学习应用于真实机器人控制的前沿趋势。",
-        "howItWorks": "根据README和公开项目信息，目前可以确认该项目的实现思路是：基于MuJoCo Warp物理引擎进行GPU加速的并行仿真，为Microduck双足机器人提供强化学习训练环境。它使用PPO算法训练策略，并采用BAM执行器模型来精确模拟真实Dynamixel舵机的物理特性（如电压控制、反电动势和摩擦力），以缩小仿真到现实的差距。训练中通过域随机化（如摩擦力、指令延迟、电压）和齿隙模拟来增强策略的鲁棒性。最终，训练好的策略被导出为ONNX格式，部署到真实机器人上，通过一个共享的61维观测空间实现多策略热切换。",
+        "summary": "`i-have-adhd` 并非一个常规的代码库，而是专为 AI 编码助手设计的一套“技能”或规则集。它通过一份严格的提示词文档，强制让 AI 的回答变得直接、结构化和行动导向，消除诸如“这是个好问题”、“希望能帮到你”等冗余信息，从而使输出对注意力难以集中或追求效率的用户极为友好。此项目不依赖任何编程逻辑，其核心就是一份定义了 10 条输出规则的文本文件。",
+        "whyItMatters": "该项目精准解决了当前 AI 编码助手普遍存在的回复冗长、关键信息被“埋葬”的痛点。它并非简单地优化一个模型，而是通过巧妙的外部规则工程，在不修改模型本身的前提下，显著提高了人机协作的效率。其爆发式的关注度反映了开发者社区对更直接、更结构化、更人性化 AI 交互体验的强烈需求，尤其是在认知无障碍领域，这是一个通过设计思想而非复杂算法创造巨大价值的典范。",
+        "howItWorks": "根据 README 和项目文件，此项目本身不包含可执行的 Python 或 TypeScript 逻辑，而是一套通过文本文件（如 SKILL.md 和 AGENTS.md）定义的“技能包”，供 AI 编码助手（如 Claude Code）作为插件加载。其核心是一个包含 10 条规则的提示词文件，指导 AI 在生成回复时遵循严格的格式准则：例如，将下一步操作放在最前、对多步任务编号、禁止寒暄和总结等。安装过程本质上是将这套规则注入 AI 的上下文中，使其改变回答风格。",
         "tags": [
-          "reinforcement-learning",
-          "robotics",
-          "sim-to-real",
-          "mujoco",
-          "bipedal-locomotion"
+          "prompt-engineering",
+          "coding-agent",
+          "productivity",
+          "accessibility",
+          "llm-output"
         ],
         "technologies": [
           "Python",
-          "MuJoCo Warp",
-          "mjlab",
-          "PPO",
-          "ONNX",
-          "BAM",
-          "Hugging Face Hub"
+          "TypeScript"
         ],
         "learn": {
           "topics": [
-            "基于MuJoCo Warp的GPU加速并行环境模拟",
-            "PPO强化学习算法在机器人控制中的应用",
-            "仿真到现实迁移：域随机化与执行器精确建模",
-            "ONNX模型导出与部署",
-            "多任务策略的热切换架构"
+            "LLM 系统级提示词设计",
+            "RAG 中的文档检索与上下文注入",
+            "AI 可插拔技能或插件架构",
+            "内容输出的约束与格式化技巧",
+            "无障碍与认知友好的界面/内容设计"
           ],
-          "learningPath": "建议先理解强化学习基础（PPO算法）和MuJoCo物理引擎的并行化（Warp）。然后，学习该项目中处理仿真到现实迁移（Sim-to-Real）的关键技术，如执行器建模和域随机化。最后，观察它是如何设计多任务策略并实现热切换的。"
+          "learningPath": "建议从理解提示工程的基本概念开始，然后学习 RAG 中如何通过文档注入上下文。之后，可以直接研究 SKILL.md 文件，分析其规则是如何通过限定词和禁令来有效约束 LLM 输出风格的。最后，可以动手尝试为自己的 AI 助手编写一套类似的自定义规则文件。"
         },
         "build": {
-          "title": "MiniWalker RL",
-          "description": "一个为微型双足机器人设计的简化版强化学习训练环境，专注于在平坦地面行走并支持简单的本体感受观测。",
+          "title": "ActionFirst Rewriter",
+          "description": "构建一个最小可用的 Coding Agent 输出风格转换器，它能将冗长、带客套话的 AI 回答实时转换为简洁、行动导向的格式，帮助用户快速获取可执行步骤。",
           "features": [
-            "使用MuJoCo Warp进行GPU加速的并行环境模拟",
-            "实现一个带有速度指令的平坦地形行走任务",
-            "包含简化的执行器模型（电压控制与摩擦力）",
-            "支持PPO算法训练并导出ONNX模型",
-            "提供键盘控制的仿真环境回放与推理脚本"
+            "提供一个文本框，粘贴 AI 的原始回答",
+            "内置一个可配置的提示词模板，模拟 SKILL.md 的规则",
+            "一键将输入内容重写为“行动优先、步骤编号、无客套话”的格式",
+            "展示转换后的字符数或要点数，让改进效果可视化",
+            "提供一个开关，对比“Before/After”两种风格"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "affaan-m",
+      "name": "ECC",
+      "fullName": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "primaryLanguage": "JavaScript",
+      "totalStars": 257824,
+      "starsThisWeek": 7264,
+      "analysis": {
+        "summary": "ECC 是一个面向 AI 编码代理的“操作系统”和工具箱，旨在为 Claude Code、Codex、Cursor 等不同的编码助手提供一个统一的、可复用的工程流程。它通过预置的 68 个专业代理、292 项技能和自动化 Hooks，将计划、测试、实现、审查和记忆等最佳实践注入到 AI 编程中，让开发者无需在每次对话中重复构建这些流程。",
+        "whyItMatters": "随着 AI 编码助手日益普及，开发者面临的挑战从“如何让 AI 写出代码”转变为“如何让 AI 按照工程标准持续、可靠地交付”。ECC 解决了这一痛点，它不是在单个提示中重启炉灶，而是建立一个持久化的代理性能优化系统，让记忆、安全审查和研发最佳实践在工具层面落地。该项目极高的关注度（25万+星标）反映出整个社区对标准化、系统化地驾驭编码代理的巨大需求。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 ECC 通过提供一套结构化的目录（agents/、skills/、commands/、hooks/、rules/）和脚本（scripts/），为多种编码代理（如 Claude Code、Codex）注入统一的工程流程。它定义了一个“计划-测试-实现-审查-验证-记忆”的循环，并通过一个名为 `ecc-universal` 的 npm 包，包含一个引导式安装向导，能够感知不同的代理环境并安全地将这些预设的代理、技能和规则部署进去。项目还提到了 `AgentShield` 和 `ecc-agentshield` 包，用于对代理相关的配置进行安全扫描。",
+        "tags": [
+          "agent-harness",
+          "coding-agent",
+          "skills-framework",
+          "ai-workflow",
+          "developer-tools"
+        ],
+        "technologies": [
+          "JavaScript",
+          "TypeScript",
+          "Python",
+          "Go",
+          "Java",
+          "Shell",
+          "Perl",
+          "Markdown",
+          "Node.js"
+        ],
+        "learn": {
+          "topics": [
+            "代理工程（Agentic Engineering）与工作流编排",
+            "可复用技能（Skills）与工具的模块化封装",
+            "对 LLM 行为的运行时约束与 Hook 机制",
+            "跨平台插件/适配器的安装与配置管理",
+            "为编码代理制定静态 Rules 与规范"
+          ],
+          "learningPath": "建议从理解 ECC 的‘技能（Skills）’和‘代理（Agents）’目录的组织方式开始，学习如何将一个工程任务拆解为结构化的步骤。接着，探究其 hooks 和 rules 如何介入编码代理的生命周期，以实现自动化审查和规范执行。最后，可以研究其跨多种平台（Claude Code、Codex）的‘适配器’工作模式，理解如何通过安装脚本和配置文件实现与不同宿主环境的集成。"
+        },
+        "build": {
+          "title": "Mini SkillForge",
+          "description": "一个个人技能管理器，允许你定义、版本控制和复用针对不同项目场景的 Mini Skills，并从命令行快速调用。目标是复现多代理系统中‘将固定流程封装为可复用技能’的设计理念。",
+          "features": [
+            "通过 YAML 文件定义技能，包含 name、trigger、steps 等基本字段",
+            "提供 CLI 子命令来列出、搜索和运行指定的技能（skill run <name>）",
+            "支持将技能包（目录）安装到全局或本地项目中",
+            "记录每次技能运行的基本日志，并支持简单的版本号",
+            "支持通过简单的变量替换（{{placeholder}}）在技能步骤中传入参数"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "openai",
+      "name": "plugins",
+      "fullName": "openai/plugins",
+      "url": "https://github.com/openai/plugins",
+      "description": "OpenAI Plugins",
+      "primaryLanguage": "JavaScript",
+      "totalStars": 6628,
+      "starsThisWeek": 1181,
+      "analysis": {
+        "summary": "openai/plugins 是 OpenAI 维护的一个社区示例仓库，展示了如何为 Codex 代理构建和打包插件。它并非一个独立的产品，而是一套围绕 `.codex-plugin` 清单的约定和参考实现，帮助开发者将外部工具、设计系统或应用构建流程集成为 Codex 可调用的扩展。",
+        "whyItMatters": "该项目揭示了 AI 代理从封闭模型走向开放工具生态的关键路径。通过标准化的插件清单和多表面集成（MCP、Hooks、Commands），开发者可以将任意内部服务或专业工作流（如设计到代码、日程管理）封装为可组合的代理能力。在当前 AI 代理竞争从模型能力转向工具调用和生态建设的背景下，理解这种插件体系结构对把握代理平台化趋势至关重要。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 openai/plugins 不是一个单一的可执行应用，而是一个 Codex 插件示例的精选集合。每个插件必须包含 `.codex-plugin/plugin.json` 清单文件，并可附带诸如 `skills/`、`.app.json`、`.mcp.json`、`agents/`、`commands/` 和 `hooks.json` 等可选表面层（surfaces）来扩展 Codex 的能力。该项目通过一个默认的市场清单文件 `.agents/plugins/marketplace.json` 将插件组织起来，供 Codex 环境发现和加载。提供的丰富示例展示了如何为 Figma、Notion 或应用构建等特定领域定义技能和工具，但具体的插件加载、沙箱执行或代理协调机制未在材料中公开。",
+        "tags": [
+          "codex-plugin",
+          "ai-agent",
+          "openai",
+          "developer-tools",
+          "example-collection"
+        ],
+        "technologies": [
+          "JavaScript",
+          "JSON (plugin manifest)"
+        ],
+        "learn": {
+          "topics": [
+            "AI 代理插件架构",
+            "声明式插件清单 (plugin.json)",
+            "技能与工具定义 (Skills & MCP)",
+            "代理市场与发现机制",
+            "多表面集成 (Surfaces)"
+          ],
+          "learningPath": "建议先理解 AI 插件系统的基本概念和 `plugin.json` 的声明式清单结构；然后选一个相对简单的插件（如 `netlify`）分析其 `skills/` 和工具定义（如 MCP 服务器指向）；最后动手仿写一个带自定义技能的本地插件，并在 Codex 环境中调试其 Hook 与命令交互。"
+        },
+        "build": {
+          "title": "CalAgent",
+          "description": "一个个人日程助手 Side Project，允许用户用自然语言创建、查询和总结日程，并通过插件架构集成本地日历工具。",
+          "features": [
+            "自然语言输入：支持文本指令创建、查询和修改日程事件",
+            "日程总结：自动汇总当日或本周的待办事项和已完成事件",
+            "多步骤代理工作流：将复杂指令拆解为多步工具调用",
+            "本地日历同步：通过命令行工具或 API 与系统日历交互",
+            "插件清单注册：每个工具以独立插件形式注册并动态加载"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "bilawalsidhu",
+      "name": "gods-eye-view",
+      "fullName": "bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "primaryLanguage": "JavaScript",
+      "totalStars": 32166,
+      "starsThisWeek": 12931,
+      "analysis": {
+        "summary": "God's Eye View 是一个在浏览器中运行的“间谍卫星模拟器”，它将航班、船舶、卫星、地震、摄像头等公开的实时数据源融合到一个逼真的 3D 地球上。用户可以自由漫游、追踪目标，并通过 AI 语音与整个场景进行交互。",
+        "whyItMatters": "该项目展示了如何将分散的公开信源（OSINT）整合成一个直观、交互式的情报视图，打破了数据孤岛。它之所以引起巨大关注，是因为它让普通开发者也能触及原本看似遥不可及的空间可视化技术，并融合了最新的 AI 语音交互，体现了“空间智能”大众化和开源协作的强大趋势。",
+        "howItWorks": "根据 README 和 package.json，God's Eye View 是一个在浏览器中运行的单页应用。它利用 Cesium 渲染一个高精度的 3D 地球，并在其上覆盖多个实时或模拟的数据图层。每个数据源（如航班、船舶）都被组织为独立的模块。后端服务器（通过 Node.js 提供）负责连接外部 API 获取数据，并将处理后的信息安全地提供给仅运行在 `localhost` 的前端客户端。应用通过 Vite 进行构建，核心 3D 渲染依赖 `cesium` 库，轨道计算使用了 `satellite.js`。语音控制功能需要一个 OpenAI 密钥，该密钥仅在后端使用，前端通过短期会话令牌进行安全通信。",
+        "tags": [
+          "geospatial",
+          "osint",
+          "3d-visualization",
+          "realtime-data",
+          "voice-ai"
+        ],
+        "technologies": [
+          "JavaScript",
+          "Cesium",
+          "Node.js",
+          "Vite",
+          "satellite.js",
+          "OpenAI API"
+        ],
+        "learn": {
+          "topics": [
+            "Cesium 及 3D Tiles 渲染",
+            "多元实时地理空间数据融合与可视化",
+            "浏览器端高性能 3D 应用的架构设计",
+            "AI 智能体与 3D 场景的集成与安全通信",
+            "模块化的地理数据源代理模式"
+          ],
+          "learningPath": "建议首先学习 Cesium 的基础知识，理解如何加载 3D Tiles 和实体。然后，通过该项目学习如何在前端处理多元的实时地理空间数据流，接着研究其模块化的后端服务代理模式，最后再探索将 AI 语音助手与 3D 场景上下文结合的实现方式。"
+        },
+        "build": {
+          "title": "Sensor Globe",
+          "description": "一个单页 Web 应用，在浏览器中展示一个带有模拟传感器覆盖范围和标注功能的 3D 地球，用户可以通过点击获取地点的模拟情报信息。",
+          "features": [
+            "使用 Cesium 渲染一个基础 3D 地球",
+            "在地球上添加几个可定位的模拟“地面传感器”，展示其估算的覆盖视锥",
+            "实现点击地球任意位置，显示该坐标的模拟“情报卡片”（海拔、地表类型）",
+            "添加一个简单的“目标追踪”模式，选定地点后镜头可环绕观察",
+            "集成一个“夜视”风格的后期处理着色器作为视觉滤镜"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "mksglu",
+      "name": "context-mode",
+      "fullName": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and   enforces routing across 17 platforms via MCP + hooks.",
+      "primaryLanguage": "TypeScript",
+      "totalStars": 22675,
+      "starsThisWeek": 2102,
+      "analysis": {
+        "summary": "Context Mode 是一个针对 AI 编码代理（如 Claude Code、Gemini CLI）的上下文窗口优化工具，它通过 MCP 协议以插件形式运行。它旨在解决因工具调用（如读取文件、网络请求）产生的原始数据，以及因会话压缩导致的任务记忆丢失这两大问题。其核心策略是将原始输出“沙箱化”处理，将数据提取、索引至本地 SQLite 数据库，并让模型在需要时按需搜索，从而极大节省上下文空间并维持会话的连续性。",
+        "whyItMatters": "随着 AI 编码助手越加普及，模型有限的上下文窗口成为制约其处理复杂、长期任务的核心瓶颈。Context Mode 从工程角度切入，不仅通过沙箱化和数据索引减少了上下文占用，还试图解决会话压缩后“模型失忆”的问题，这对提升 AI 辅助开发的连贯性和效率至关重要。项目在短时间内获得极高关注并标榜被多家大型科技公司使用，表明市场对解决上下文窗口“污染”和会话状态丢失问题的实用工具存在巨大需求，也体现了一种从“让模型阅读一切”到“让模型按需检索”的设计范式转变。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Context Mode 的核心思路是将 AI 编码代理发起的工具调用输出进行“沙箱化”处理，避免原始数据（如文件内容、日志）直接涌入上下文窗口。其实现依赖 MCP (Model Context Protocol) 服务，通过钩子（hooks）拦截特定平台（如 Claude Code、Gemini CLI）的工具调用。被拦截的数据不会直接返回给模型，而是被提取、摘要或索引到本地的 SQLite 数据库（利用 FTS5 全文搜索引擎和 BM25 算法）。模型在后续需要时，可像查询知识库一样进行关键词检索，仅获取最相关的片段，从而实现宣称的 98% 上下文空间缩减。同时，它提倡“用代码思考”的模式，即让 LLM 生成并执行一个脚本去处理数据，最终只将计算结果（而非原始数据）返回，以进一步节省 Token。",
+        "tags": [
+          "mcp",
+          "context-window",
+          "ai-coding-agents",
+          "token-optimization",
+          "sqlite-fts5"
+        ],
+        "technologies": [
+          "TypeScript",
+          "Node.js",
+          "Model Context Protocol (MCP)",
+          "SQLite",
+          "FTS5",
+          "better-sqlite3",
+          "Zod"
+        ],
+        "learn": {
+          "topics": [
+            "MCP 服务器与客户端交互模式",
+            "SQLite FTS5 全文搜索与 BM25 相关性排序",
+            "AI 编码代理的上下文窗口管理与 Token 优化策略",
+            "在 Node.js 中安全执行动态代码（沙箱化）",
+            "跨平台 CLI 工具的钩子（hooks）机制设计"
+          ],
+          "learningPath": "建议先了解 Model Context Protocol (MCP) 的基本概念，学习如何构建一个 MCP 服务器。随后，可以深入研究 SQLite 的 FTS5 全文索引和 BM25 相关性排序算法。最后，结合 Node.js 实践，探索如何在 CLI 工具中利用钩子或中间件模式，拦截并处理 AI 模型的 I/O 流。"
+        },
+        "build": {
+          "title": "MiniContext",
+          "description": "一个轻量级的沙箱化代码执行与结果缓存服务器，旨在为 AI 编码助手节省上下文窗口。",
+          "features": [
+            "接收来自 AI Agent 的代码片段并在沙箱环境中安全执行",
+            "将执行结果（如文件统计数据）存入本地 SQLite 数据库以替代直接输出原始数据",
+            "提供关键词搜索接口，让 Agent 能从历史执行结果中按需检索信息",
+            "计算并展示通过沙箱执行相比于直接输出所节省的 Token 数量"
           ],
           "difficulty": "intermediate"
         }
