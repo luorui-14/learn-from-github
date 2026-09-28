@@ -1,155 +1,205 @@
 {
-  "weekOf": "2026-09-21",
-  "generatedAt": "2026-09-21T03:36:46.692Z",
+  "weekOf": "2026-09-28",
+  "generatedAt": "2026-09-28T03:58:14.453Z",
   "repositories": [
     {
-      "owner": "alibaba",
-      "name": "open-code-review",
-      "fullName": "alibaba/open-code-review",
-      "url": "https://github.com/alibaba/open-code-review",
-      "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
-      "primaryLanguage": "Go",
-      "totalStars": 38526,
-      "starsThisWeek": 15504,
+      "owner": "anthropics",
+      "name": "financial-services",
+      "fullName": "anthropics/financial-services",
+      "url": "https://github.com/anthropics/financial-services",
+      "description": null,
+      "primaryLanguage": "Python",
+      "totalStars": 37896,
+      "starsThisWeek": 2606,
       "analysis": {
-        "summary": "OpenCodeReview 是从阿里巴巴集团内部大规模孵化的 AI 代码审查命令行工具。它不只简单地将代码变更扔给 LLM，而是通过一个独特的混合架构：先用确定性工程保证文件选择、规则匹配的准确性，再利用 Agent 进行深度、低成本的上下文分析和缺陷审查，最终实现精准到行的结构化评论。该工具已在阿里内部服务数万开发者，发现了数百万个代码缺陷，并在与通用 Agent 的基准测试中展现了 1/9 的 Token 消耗和显著更高的 F1 分数。",
-        "whyItMatters": "OpenCodeReview 解决的核心问题是通用 AI 编程代理在代码审查场景下的“三高”痛点：高遗漏（覆盖不全）、高漂移（位置不准）和高波动（质量不稳定）。它体现了当前 AI 工程化应用的重要趋势：并非简单依赖模型的原始能力，而是通过将确定性工程逻辑与 AI Agent 动态决策相结合，来解决高可靠性要求的垂直场景问题。这比单纯的 Prompt 工程更稳定、更经济（对比通用 Agent 节省 89% 的 Token），为大型团队如何负责任且高效地把 LLM 引入到SDLC 主路径提供了经过实战验证且开源的蓝图。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 OpenCodeReview 采用确定性工程与 LLM Agent 结合的混合架构。首先，工具通过读取 Git diff 实现精确的文件过滤与智能合并打包，确保审查覆盖所有必要的变更。然后，通过模板引擎将预置的多语言规则集（如空指针、线程安全、XSS 和 SQL 注入检查）与具体文件特征进行匹配，将高精度的规则匹配结果作为硬约束提供给 Agent。Agent 部分则负责动态决策，使用针对代码审查场景深度优化的提示模板与精简的工具集（从海量工具调用轨迹中提炼），调用可配置的 LLM（支持 OpenAI 及 Anthropic 兼容接口）进行深度上下文检索和最终审查意见的生成。独立的评论定位与反思模块会在事后修正 AI 反馈的行号精度与内容质量。材料还提到该工具支持全文件扫描（ocr scan）及委托模式，不依赖生成差异即可开始审查。",
+        "summary": "这是 Anthropic 为金融服务行业提供的开源 Agent 集合，涵盖投资银行、股权研究、私募股权和财富管理等核心场景。项目通过标准化的插件架构提供了从生成路演 PPT、构建 DCF 模型、分析财报电话会到基金对账的端到端参考实现。所有的 Agent 输出均为阶段性的分析师草稿，强调必须由合格专业人员审核把关。",
+        "whyItMatters": "该项目直面了生成式 AI 在高度受监管金融场景落地的核心矛盾：如何平衡自动化效率与合规风险。它通过全透明、可审计的文件化提示词（Markdown/YAML）和强制人工确认的流程设计，提供了一种可被企业采纳的审慎模式。值得关注的原因在于它定义了“不作为黑箱决策者，而作为分析师副驾驶”的生成式 AI 应用范式，并展示了如何通过 MCP 协议将大模型与 Bloomberg、S&P 等专业金融数据源安全地连接起来。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认该项目采用了插件化架构。它将复杂的金融服务流程拆解为独立的“Agents”（如 Pitch Agent、GL Reconciler），每个 Agent 是包含系统提示词和垂直技能的独立目录。技能（Skills）和命令（Commands）以 Markdown 和 YAML 文件编写，供 Claude 动态加载调用。项目支持两种运行模式：一是在 Claude Cowork 中作为本地插件直接安装使用；二是通过 Managed Agents API 以无头方式部署，后者会利用 agent.yaml 和 orchestrator 脚本进行远程调用。数据连接方面，项目通过统一的 Model Context Protocol (MCP) 配置文件连接 Morningstar、FactSet 等外部数据源。所有流程的输出均需经过人类签字确认，不直接执行交易或更新账本。",
         "tags": [
-          "code-review",
-          "ai-agent",
-          "developer-tools",
-          "go",
-          "cli"
+          "financial-services",
+          "agent-workflow",
+          "claude",
+          "mcp",
+          "reference-architecture"
         ],
         "technologies": [
-          "Go",
-          "Git",
-          "Node.js (CLI分发包管理者)",
-          "LLM集成 (兼容OpenAI与Anthropic接口)",
-          "npm包管理"
+          "Model Context Protocol (MCP)",
+          "Claude Cowork",
+          "Claude Managed Agents API",
+          "Python",
+          "Markdown",
+          "YAML"
         ],
         "learn": {
           "topics": [
-            "确定性工程与 LLM Agent 的混合架构设计",
-            "代码审查场景下的 Prompt Engineering 与工具集优化",
-            "基于模板引擎的细粒度代码规则匹配与审查注意力聚焦",
-            "评论的定位修正与反思机制 (Post-hoc refinement)",
-            "代码审查基准测试中的代价权衡：高精度优先 vs. 高召回优先"
+            "Model Context Protocol (MCP)",
+            "Agent 架构与工作流 Orchestration",
+            "金融服务领域的提示词工程",
+            "无头部署与托管代理模式 (Managed Agents)",
+            "Claude Cowork 插件机制"
           ],
-          "learningPath": "建议先了解 Git 底层 diff 生成原理与 patch 结构，然后通过 OCR 的内置规则理解常见代码缺陷（如 NPE、SQL 注入）的模式。接着，掌握如何将确定性工程（硬约束）与 AI Agent 结合，设计用于高精度任务的混合架构。重点学习如何对 LLM 进行场景化微调（优化的 Prompt 和精简的工具集）以降低成本并提升稳定性。最后，尝试搭建一个自己的 Code Review Bot 并在本地运行实验。"
+          "learningPath": "建议首先理解 MCP 协议的基本概念，然后阅读项目中的 financial-analysis 垂直插件，掌握 估值模型（DCF、LBO）提示词的编写思路；接着通过 pitch-agent 学习如何组合多个技能构成完整的工作流；最后查看 managed-agent-cookbooks 了解 API 部署与子代理协作。"
         },
         "build": {
-          "title": "MiniReviewCLI",
-          "description": "一个在终端运行的极简代码审查工具，输入一个 Git 仓库路径和一个变更范围（commit 或 diff），输出对代码中拼写错误和 null 安全检查的报告，报告结果精确到行并保存为 JSON 文件。",
+          "title": "Personal Earnings Reviewer",
+          "description": "构建一个面向个人投资者的简化版财报分析助手 Side Project。通过 Mimicking 此项目的 Agent 思维，用 Python 脚本解析上传的财报 PDF，提取关键财务指标，生成结构化的 Markdown 摘要，并模仿分析师的语气输出一份简短的投资备忘录。",
           "features": [
-            "支持通过 Git 命令行读取指定 commit 的代码变更，自动过滤非代码文件。",
-            "内置拼写错误检查与 Java/C 语言空指针/空引用风险的正则规则集，为每条命中生成一行内嵌评论。",
-            "使用用户配置的 OpenAI 兼容 API 调用 LLM 完成对规则命中的二次确认和上下文解释。",
-            "输出结构化的 JSON 审查报告，包含文件路径、行号和问题描述，并保存到本地文件。",
-            "简单的 CLI 子命令入口，可通过配置文件设置 provider 类型与 API key。"
+            "上传公司财报 PDF 并自动提取文本",
+            "计算关键财务比率（如毛利率、净利率、同比增速）",
+            "生成简洁的 Markdown 财务摘要",
+            "输出一份带有风险提示的简短投资观察笔记",
+            "纯本地脚本运行，不接外部 API，确保数据隐私"
           ],
           "difficulty": "intermediate"
         }
       }
     },
     {
-      "owner": "anthropics",
-      "name": "claude-code",
-      "fullName": "anthropics/claude-code",
-      "url": "https://github.com/anthropics/claude-code",
-      "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+      "owner": "paperclipai",
+      "name": "paperclip",
+      "fullName": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "description": "The open-source app everyone uses to manage agents at work",
       "primaryLanguage": "TypeScript",
-      "totalStars": 147198,
-      "starsThisWeek": 2342,
+      "totalStars": 90355,
+      "starsThisWeek": 7364,
       "analysis": {
-        "summary": "Claude Code 是 Anthropic 推出的一个代理式编码工具，直接运行在终端中，面向软件开发者的日常编码与维护场景。它允许开发者用自然语言指挥工具执行代码操作、解释复杂代码以及管理 git 工作流，旨在将 LLM 能力嵌入到命令行和开发流程的最前线。",
-        "whyItMatters": "它将 LLM 代理式能力从 IDE 插件或 Web 聊天界面下沉到终端这一开发者最基础的环境，缩短了从理解代码到执行操作的路径。当前开发者工具正在从辅助补全向自主执行切换，Claude Code 代表了终端即代理入口的新交互范式，值得关注其在终端工具链整合、插件生态与隐私数据处理方面的实践。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Claude Code 是一个运行在终端中的代理编码工具，通过自然语言指令与用户交互。它被描述为可以理解代码库、执行例行任务、解释复杂代码并处理 git 工作流。根据安装方式，它通过 curl 或包管理器安装，依赖 Node.js 18+，以 TypeScript 为主要开发语言，并通过 npm 分发。具体内部代理逻辑、模型调用机制、代码库分析方式在所提供的材料中没有进一步说明。",
+        "summary": "Paperclip 是一个开源的多 AI Agent 编排平台，将多个大模型驱动的 Agent 作为“员工”组织成一家虚拟公司。它提供组织架构图、任务派发、预算管控与审批治理等功能，让用户在一个类似任务管理器的仪表盘中监督 Agent 团队自主完成复杂的商业目标。",
+        "whyItMatters": "随着 AI Coding Agent 和自动化工具的泛滥，管理大量并行运行的智能体正从个人效率问题变成组织级挑战。Paperclip 解决了多智能体协作中任务丢失、重复工作、成本失控和治理缺失的痛点，标志着 AI Agent 应用正从单机助手模式转向需要明确组织架构、预算和审批的团队化运营，体现了自主 AI 团队落地的关键基础设施趋势。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Paperclip 采用分层控制平面架构。它通过 Node.js 服务端集中管理四个核心模块：身份与权限、任务与工作负载（基于工单系统，任务携带目标追溯）、心跳与调度（基于数据库的唤醒队列和预算检查）以及治理与审批流程。Agent 适配层通过心跳协议与 Claude Code、Codex 等不同外部 Agent 实现互操作，Agent 状态、会话上下文和预算消耗会被持久化存储，从而实现跨会话的任务连续性和成本控制。",
         "tags": [
-          "agentic-coding",
-          "cli-tool",
-          "git-integration",
-          "developer-tools",
-          "LLM"
+          "ai-agent-orchestration",
+          "team-management",
+          "task-automation",
+          "cost-control",
+          "governance"
         ],
         "technologies": [
           "TypeScript",
           "Node.js",
-          "npm"
+          "React",
+          "pnpm (workspace monorepo)",
+          "PostgreSQL (推断自 db:generate 与 migrate 脚本)",
+          "Vitest",
+          "Playwright"
         ],
         "learn": {
           "topics": [
-            "CLI 工具分发与安装机制（npm/curl/Homebrew/WinGet）",
-            "代理式编码工具的人机交互设计",
-            "基于 LLM 的代码库理解与操作执行",
-            "终端工具与 git 工作流的自动化集成",
-            "插件架构在开发者工具中的应用"
+            "Agent 心跳机制与任务调度",
+            "多智能体编排与目标树追踪",
+            "Token 消耗细粒度监控与预算控制",
+            "原子任务锁与跨会话状态恢复",
+            "AI 原生审批流与治理策略"
           ],
-          "learningPath": "建议先理解终端工具的分发机制（如 npm 全局安装）和 CLI 框架，然后研究如何将自然语言指令解析为具体操作，再深入 LLM 在开发者工具中的集成模式（如代码理解与操作执行），最后学习如何设计代理的行为边界与安全确认环节。"
+          "learningPath": "建议先理解 AI Agent 的心跳通信和任务状态机，接着搭建一个简单的 Node.js 后端实现工单系统，然后在此基础上加入预算管理和审批流，最后尝试对接一个真实 Agent（如使用 CLI 调用的外部工具）并通过仪表盘观察其运行。"
         },
         "build": {
-          "title": "CommitMate",
-          "description": "搭建一个终端命令行工具，接收自然语言描述，自动生成并执行 git commit 信息，同时生成变更摘要。",
+          "title": "MiniAgentBoard",
+          "description": "一个极简的 AI Agent 团队任务看板，模拟向不同 Agent 分派任务并通过心跳机制检查进度。",
           "features": [
-            "接收自然语言命令（如'总结我的改动并提交'）",
-            "自动运行 git diff 获取未暂存变更",
-            "调用 LLM API 生成约定式 commit message",
-            "在终端预览并请求用户确认后执行 git commit",
-            "生成并显示改动摘要与主要影响文件列表"
+            "手动为不同角色的 Agent 创建任务并设定预算上限。",
+            "Agent 通过定时心跳认领任务，并将执行状态（已完成、进行中、受阻）上报给看板。",
+            "看板统一展示所有 Agent 的当前任务及预算使用进度。",
+            "当 Agent 超出预算时，自动暂停其任务并高亮告警。",
+            "Agent 重连后能恢复之前被中断的任务上下文。"
           ],
           "difficulty": "intermediate"
         }
       }
     },
     {
-      "owner": "affaan-m",
-      "name": "ECC",
-      "fullName": "affaan-m/ECC",
-      "url": "https://github.com/affaan-m/ECC",
-      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-      "primaryLanguage": "JavaScript",
-      "totalStars": 263888,
-      "starsThisWeek": 6453,
+      "owner": "vectorize-io",
+      "name": "hindsight",
+      "fullName": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "description": "Hindsight: Agent Memory That Learns",
+      "primaryLanguage": "Python",
+      "totalStars": 37811,
+      "starsThisWeek": 11089,
       "analysis": {
-        "summary": "ECC 是一个专为编码 Agent 设计的性能优化系统，它把工程实践中反复出现的“规划-测试-实现-回顾-验证-记忆-改进”工作流打包为可安装的规则、技能、记忆和安全扫描模块。该项目兼容 Claude Code、Codex、Cursor 等多个编码助手，让 Agent 在编写代码时拥有结构化的开发流程、可复用的技术经验和安全护栏。",
-        "whyItMatters": "随着越来越多的开发者依赖 AI 编码 Agent，仅靠 prompt 工程已难以保证代码质量和安全一致性。ECC 将传统软件工程中的 rules、testing、review 和 memory 机制系统化地注入 Agent 工作流，解决了 Agent 代码输出缺乏过程规范的问题。这种为 AI 编码助手提供“操作系统级”流程支持的做法，代表了从“编码副驾驶”向“工程团队一份子”的演化趋势，尤其适合希望规模化使用 AI 编码的团队。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 ECC 提供了一套由多家编码 Agent 共享的目录结构和运行时约定。它通过 npm 包 `ecc-universal` 提供引导式安装向导，将预制好的 agents/、skills/、commands/、hooks/ 和 rules/ 等目录部署到 Claude Code、Codex 或 Kimi Code 等目标 harness 的项目或用户配置中。安装向导会先盘点已有安装范围，再将 `ecc@ecc` 插件注入所选 harness 的标准插件路径。此外，项目包含了用 TypeScript 和 Shell 编写的辅助脚本，用于运行安装后诊断、会话检查、多 harness 适配审计等工具化操作，但 README 未详细说明 Agent 运行时如何动态调度 68 个内置 Agent 和 292 项技能。",
+        "summary": "Hindsight 是一个为 AI Agent 设计的长期记忆与学习系统，与仅记录对话历史的方案不同，它更注重让 Agent 从信息中归纳知识。项目提供了从 Docker 一键部署到 Python SDK 的完整工具链，并支持 60 多种 Agent 框架与编码助手的集成。",
+        "whyItMatters": "它直接回应了当前 AI Agent 工程的最大痛点——长期记忆的准确性与结构化学习能力——并用仿生记忆类型的思路在 LongMemEval 基准上取得了领先性能。围绕它还形成了从零代码集成到自托管部署的开源生态，降低了让 Agent “记住并学会”的落地门槛。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 Hindsight 将记忆分为“世界事实”和“体验”等类型，通过 retain 操作调用 LLM 提取事实、实体和关系并标准化存储；recall 操作采用语义向量、关键词 BM25、图谱、时间范围四种并行检索策略，结果通过倒数排序融合和交叉编码器重排序后返回；reflect 操作则对现有记忆进行更深层的分析以形成新的连接与理解。存储层支持内置嵌入式数据库或外部 PostgreSQL。",
         "tags": [
-          "agent-harness",
-          "coding-tools",
-          "developer-workflow",
-          "claude-code",
-          "skills-runtime"
+          "Agent Memory",
+          "RAG",
+          "LLM Ops",
+          "Python",
+          "Long-term Memory"
         ],
         "technologies": [
-          "JavaScript",
-          "TypeScript",
           "Python",
-          "Go",
-          "Shell",
-          "Java",
-          "Perl"
+          "TypeScript",
+          "Docker",
+          "PostgreSQL",
+          "OpenAI API"
         ],
         "learn": {
           "topics": [
-            "Coding Agent 的插件与 Hook 机制",
-            "可复用规则集的目录结构与条件加载",
-            "Agent 代码审查与安全扫描的自动化流水线",
-            "编码助手的记忆与持续学习模式设计",
-            "多 Agent 适配层的抽象与维护策略"
+            "仿生记忆结构",
+            "多路召回与结果融合排序",
+            "Agent 记忆的操作模型",
+            "LLM 包装器集成模式"
           ],
-          "learningPath": "先理解编码 Agent（如 Claude Code）的插件与规则系统，然后用小项目练习为单个 Agent 手写几条 rules 和 hooks，最后阅读 ECC 的安装脚本和目录布局，了解如何将 rules/hooks/skills 打包成可移植的 reusable harness。"
+          "learningPath": "建议先理解其记忆类型模型与记忆库概念，然后通过 Python SDK 的 retain、recall、reflect 三个核心操作手动体验记忆存取的基本流程；接着学习多路检索与结果融合重排序的机制，最后可以研究一个代码 Agent 集成的实现。"
         },
         "build": {
-          "title": "AgentHarnessLite",
-          "description": "一个简化版的 Agent 性能优化本地套件，为单个代码 Agent（如 Claude Code）提供可复用的项目规则、安全扫描 Hook 和记忆摘要文件",
+          "title": "MemoryMate",
+          "description": "一个运行在本地的 “Learn-as-you-go” 个人知识助手。它记录与用户对话中的关键事实，并在新问题时先检索历史记忆再回答，使用向量相似度和关键词匹配的多路召回策略。",
           "features": [
-            "支持投放按语言分类的编码规则集，Agent 启动时可选择加载",
-            "提供一个 Pre-commit Hook，在提交前对 Agent 生成的代码运行自定义安全关键字扫描",
-            "通过 Markdown 文件管理 Agent 会话记忆，记录上次任务的上下文摘要",
-            "集成开源代码扫描工具（如 bandit/semgrep）的快捷调用指令",
-            "用 CLI 引导用户为当前项目初始化规则、记忆和 Hook 目录"
+            "POST /retain 接口，接收自然语言文本并提取结构化事实（实体、关系）存入 SQLite 与向量库",
+            "POST /recall 接口，基于嵌入式向量相似度和 BM25 关键词的双路检索，返回排序后的记忆列表",
+            "POST /chat 接口，自动先 recall 再调用 LLM 生成带上下文的回答，并自动将本轮对话 retain 到记忆库",
+            "提供 Swagger UI 用于调试接口"
+          ],
+          "difficulty": "intermediate"
+        }
+      }
+    },
+    {
+      "owner": "cloudflare",
+      "name": "security-audit-skill",
+      "fullName": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+      "primaryLanguage": "JavaScript",
+      "totalStars": 22395,
+      "starsThisWeek": 4805,
+      "analysis": {
+        "summary": "Cloudflare 的 security-audit-skill 是为编码 Agent 设计的一项安全审计技能，它能将 Agent 转变为自动化的安全审计员。该项目定义了一个严格的多阶段、多 Agent 工作流程，通过侦察、覆盖率驱动的漏洞挖掘、独立的对抗性验证和结构化的报告输出，来系统性地发现软件中的安全漏洞。它从 Cloudflare 实际使用的漏洞发现工具演进而来，提供了一套单仓库的起点方案。",
+        "whyItMatters": "该项目解决的是传统安全审计中人工成本高、覆盖不全面和结果难以一致验证的问题。在 AI 编码助理普及的背景下，将审计工作流系统化为 Agent 能理解和执行的技能，代表了安全测试范式向自动化、智能化迁移的前沿趋势。其强调独立验证、结构化证据和增量覆盖的设计，为解决 AI 在安全领域应用时的可靠性和可重复性挑战提供了可落地的思路。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认该项目是一套定义安全审计流程的规范与工具体系。它指导一个编码 Agent 通过六阶段流水线工作：首先在目标代码库上进行侦察，生成架构图和覆盖率账本；接着基于覆盖率账本启动多个隔离的“猎人”进行漏洞搜寻；对每个候选发现，由全新的“验证者”尝试证伪；之后将结果按已确认、待验证、已拒绝写入根据 schema 验证的 `findings.json`；最后对源材料进行独立记录验证，并生成最终报告。项目提供了零依赖的 `validate-findings.cjs` 和 `validate-coverage-ledger.cjs` 脚本来确保中间产物的机器可读性。",
+        "tags": [
+          "security-audit",
+          "coding-agent",
+          "vulnerability-discovery",
+          "automation",
+          "multi-agent"
+        ],
+        "technologies": [
+          "JavaScript",
+          "Node.js",
+          "JSON Schema"
+        ],
+        "learn": {
+          "topics": [
+            "多阶段自动化安全审计流程",
+            "对抗性验证与隔离 Agent 模式",
+            "覆盖率驱动的漏洞搜寻策略",
+            "安全发现的分类与结构化证据管理",
+            "编码 Agent 技能设计与编排"
+          ],
+          "learningPath": "建议从理解 `SKILL.md` 中定义的核心原则和审计反模式开始，再阅读 `RECONNAISSANCE.md` 了解如何进行技术侦察。接着可深入学习各攻击类文档（如 `WEB-PROTOCOL-AND-AUTH.md`）来掌握特定领域的漏洞搜寻思路，最后研究 `VALIDATION-AND-REPORTING.md` 和验证脚本，理解如何确保审计结果的可靠性。"
+        },
+        "build": {
+          "title": "AgentFlowAuditor",
+          "description": "一个基于 Node.js 的命令行工具，通过调度模拟的 AI 子 Agent 来对指定项目目录执行自动化的安全审计任务流，包括生成侦察报告、检查覆盖率、记录发现并验证结果。",
+          "features": [
+            "接收本地文件路径作为输入，生成包含架构、信任边界和输入面的侦察报告",
+            "实现读取侦察结果并分派不同检查类（如 Web 协议、客户端）的狩猎机制",
+            "支持对狩猎发现进行独立验证，将结果分为已确认、待验证和已拒绝三类",
+            "将所有发现输出为结构化的 JSON 报告文件",
+            "提供命令对输出的 JSON 报告和覆盖率账本进行机器可读的格式校验"
           ],
           "difficulty": "intermediate"
         }
@@ -162,93 +212,45 @@
       "url": "https://github.com/Tencent/WeKnora",
       "description": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
       "primaryLanguage": "Go",
-      "totalStars": 28118,
-      "starsThisWeek": 5242,
+      "totalStars": 30696,
+      "starsThisWeek": 2705,
       "analysis": {
-        "summary": "WeKnora 是一个由腾讯开源的大语言模型（LLM）驱动的知识管理平台。它旨在将原始的、分散的文档（如 PDF、Word 等）转化为可查询、可推理的动态知识资产。平台不仅提供了基于 RAG（检索增强生成）的快速问答能力，还包含了能执行复杂多步骤任务的自主推理代理（Agent），以及一个能将文档自动整理成结构化 Wiki 页面的新模式。",
-        "whyItMatters": "该项目解决了企业在处理海量、多种类内部文档时，检索效率低和知识利用不充分的问题。它将文档摄入、高级检索、自主推理和知识自动化整理整合在一个自托管的平台中，顺应了从简单问答向能自主规划和操作工具的 AI Agent 演进的趋势。其支持多数据源同步、完善的权限控制和全链路观测的设计，使其不仅是一个工具，更像是一个企业级的知识中枢，对于希望在不泄漏数据的前提下将私有知识转化为生产力的团队而言，具有很高的参考价值和实用性。",
-        "howItWorks": "根据 README 和公开项目信息，目前可以确认 WeKnora 采用模块化管道架构。系统从多源摄取文档后，经过文档解析（如处理 PDF、Word 等格式）和文本分割（支持自适应分块）生成文本块。这些文本块被向量化后存入向量数据库，用于后续的语义检索。在推理时，系统接收用户查询，首先进行检索增强生成（RAG）以获取相关文本块，然后将这些上下文连同用户问题和对话历史一起提交给大语言模型（LLM）来生成答案。高级功能（如 Agent 和 Wiki 模式）通过 ReAct 代理自主编排检索、工具调用（包括 MCP 工具和沙箱技能）和网页搜索等步骤，以处理复杂的多步推理任务。Wiki 模式则由代理自动从文档中提炼结构化、相互链接的 Markdown 知识页面。系统通过多工作空间和基于角色的访问控制实现租户隔离，并通过 Langfuse 实现全链路可观测性。",
+        "summary": "WeKnora 是由腾讯开源的一个基于大语言模型的知识管理框架，面向企业文档理解、语义检索与推理场景。它将团队文件整合到统一平台，提供 RAG 问答、多步自主推理 Agent 以及可自维护的 Wiki 三种交互模式，所有能力共享同一知识库，支持混合检索、多模态解析、可插拔模型后端以及多种部署选项。",
+        "whyItMatters": "在组织沉淀大量非结构化文档的当下，WeKnora 把检索增强生成、自主 Agent 任务执行和知识库自动整理集成为一个开源框架，解决了传统知识库“只存不搜、只搜不推理、只读不自维护”的割裂问题。它近期快速增长的关注度反映了企业对私有化部署的文档大脑和可审计、可追溯的 LLM 应用有强烈需求，代表了从单一问答向“文档理解+任务执行”平台化演进的趋势。",
+        "howItWorks": "根据 README 和公开项目信息，目前可以确认 WeKnora 融合了三套核心机制：RAG（检索增强生成）、自主推理 Agent 以及自我维护的 Wiki，三者共享同一知识库。文档通过混合检索和多模态解析被索引为可查询的片段；Agent 具备长期记忆、多步推理与工具调用（如浏览器操控、沙箱执行外部 Skill）；Wiki 则借助知识图谱自动整理和回滚文档。系统依靠可插拔的模型、向量数据库和对象存储实现本地或私有云部署。",
         "tags": [
           "RAG",
+          "Agent",
           "知识管理",
-          "LLM-Agent",
-          "文档解析",
-          "开源"
+          "文档理解",
+          "LLM 平台"
         ],
         "technologies": [
           "Go",
-          "LLM",
-          "RAG",
-          "React",
-          "MCP"
+          "Docker",
+          "Ollama",
+          "Neo4j",
+          "MinIO",
+          "Langfuse"
         ],
         "learn": {
           "topics": [
-            "RAG（检索增强生成）",
-            "ReAct Agent 框架",
-            "多源文档解析管道",
-            "向量数据库与混合检索",
-            "多工作空间 RBAC 模型"
+            "检索增强生成 (RAG)",
+            "文档解析与混合检索",
+            "Agent 工具使用与推理链",
+            "长期记忆与会话管理",
+            "知识图谱与 Wiki 自动维护"
           ],
-          "learningPath": "建议先理解 RAG（检索增强生成）的基本工作流程和向量数据库的概念。然后，可以深入学习 Agent 模式，特别是 ReAct（推理与行动）框架是如何让 LLM 进行多步规划和工具调用的。最后，可以探索多租户知识库架构中的 RBAC（基于角色的访问控制）设计和文档解析流水线的构建方式。"
+          "learningPath": "建议先理解 RAG 的基本流程与向量检索原理，然后动手搭建一个本地的文档解析与嵌入管线，再学习 Agent 的工具调用与记忆管理概念，最后尝试在小型项目中集成 LLM 推理。"
         },
         "build": {
-          "title": "DocChat",
-          "description": "一个个人文档问答助手，允许用户上传 Markdown/PDF 文件，通过聊天界面提问，系统会自动分割文档、生成向量并检索相关段落来回答问题。",
+          "title": "简易笔记问答引擎",
+          "description": "一个轻量级的笔记知识库，支持上传 Markdown/PDF 文件，通过语义搜索找到相关笔记，并调用本地 LLM 生成答案。",
           "features": [
-            "用户可上传 Markdown 和 PDF 文件创建知识库",
-            "后端自动将文档分割为文本块并调用嵌入 API 生成向量",
-            "支持基于关键词和向量的混合检索，找到与问题最相关的文本块",
-            "将检索到的文本块作为上下文，调用 LLM API 生成带引用的流式回答",
-            "提供简洁的 Web 聊天界面，展示问答记录和引用来源"
-          ],
-          "difficulty": "intermediate"
-        }
-      }
-    },
-    {
-      "owner": "addyosmani",
-      "name": "agent-skills",
-      "fullName": "addyosmani/agent-skills",
-      "url": "https://github.com/addyosmani/agent-skills",
-      "description": "Production-grade engineering skills for AI coding agents.",
-      "primaryLanguage": "JavaScript",
-      "totalStars": 97773,
-      "starsThisWeek": 3986,
-      "analysis": {
-        "summary": "该项目是一个面向 AI 编程助手的“生产级工程技能包”。它不像传统库那样提供代码实现，而是将资深工程师的开发规范、质量关口和最佳实践编码为结构化的 Markdown 技能工作流，使不同的 AI 编码代理能在“定义-规划-构建-验证-审查-发布”的完整生命周期中保持一致的高产出标准。",
-        "whyItMatters": "随着越来越多的代码由 AI 代理生成，软件质量面临“速度快但根基不牢”的新风险。这个项目致力于解决 AI 编码时的纪律缺失问题，将隐式的专家经验转化为显式的可执行规则。它反映了 AI 辅助编程正从单纯的代码补全，向需要流程化、工程化治理的新阶段转变的趋势，是连接人类专家知识与 AI 执行力的关键基础设施。",
-        "howItWorks": "根据 README 和公开的项目文件结构，项目通过 define、plan、build、verify、review、ship 六个阶段的 9 个斜杠命令来组织 25 个独立的技能文件。每个技能（如基于约束的开发、测试驱动开发）都是一个包含步骤、验证关卡和反合理论断表的 Markdown 文档，可通过 Vercel 的 Skills CLI 一键安装到 Claude Code、Cursor、Codex 等 70 多种 AI 编码代理中。AI 代理会依据项目当前阶段和所触发事件（如设计 API 或构建 UI），自动激活并执行对应的技能工作流，强制执行质量门槛。此外，还提供了预配置的专家审查角色（如资深工程师、安全审计师）。",
-        "tags": [
-          "ai-agent",
-          "developer-tools",
-          "software-quality",
-          "engineering-standards",
-          "best-practices"
-        ],
-        "technologies": [
-          "JavaScript",
-          "Markdown"
-        ],
-        "learn": {
-          "topics": [
-            "AI 编程代理的指令与工具集成（Agentic Workflow Design）",
-            "生产级软件开发流程与质量门控（Quality Gates）",
-            "测试驱动开发（TDD）与约束驱动开发（CDD）实践",
-            "代码审查的五轴分析法（Five-Axis Code Review）",
-            "源码驱动开发（Source-Driven Development）的组织方式"
-          ],
-          "learningPath": "先理解项目挂在 README 开头的六阶段生命周期图，明确从需求到交付的流程起点；再选择一个斜杠命令（建议从 /spec 或 /test 开始），仔细阅读其对应的 Markdown 技能文件，理解专家工作流的闭环设计；最后选择一个 AI 编码代理实际安装该技能包，体验其在代码生成和审查时带来的严格性变化，并对比没有使用技能包时的差异。"
-        },
-        "build": {
-          "title": "MyCodeMentor",
-          "description": "一个简化版 AI 编码导师工具，通过输入代码片段或开发意图，自动应用几条核心关卡（如安全性检查、性能反模式检测、代码简化建议），并给出结构化的改进报告，帮助开发者在提交代码前进行自助式的质量把关。",
-          "features": [
-            "接收代码片段或自然语言的功能描述",
-            "集成基本的 OWASP 安全关键字检查",
-            "进行代码复杂度（圈复杂度）的简单静态分析",
-            "输出包含严重性标签（BLOCKER/ADVISORY）的结构化审查报告",
-            "提供一键生成 Architecture Decision Record (ADR) 草稿"
+            "Markdown 和 PDF 文件上传与内容解析",
+            "基于文本分块和向量嵌入的全文语义检索",
+            "输入问题后检索相关片段，送至 LLM 生成带引用的回答",
+            "简单的 Web UI 用于文档管理和问答交互"
           ],
           "difficulty": "intermediate"
         }
